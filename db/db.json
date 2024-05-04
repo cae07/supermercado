@@ -1,0 +1,11 @@
+{
+    "alimento": [
+        {
+            "nome": "arroz",
+            "quantidade": 3000,
+            "valor": 16.00,
+            "medida": "gramas",
+            "tipo": "alimento básico"
+        }
+    ]
+}
