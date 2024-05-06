@@ -62,7 +62,13 @@
     import helpers from '../Helpers/fetchHelpers';
 
     const { years, months, measure, productFamily } = arrays;
-    const { getAllProductsHelper, updateProductHelper, addNewProductHelper } = helpers;
+    const {
+      getAllProductsList,
+      addNewProductList,
+      getAllProductsByDate,
+      updateProductHelper,
+      addNewProductHelper
+    } = helpers;
     const today = new Date(Date.now());
     
     export default {
@@ -83,7 +89,8 @@
           disabledeasure: true,
           disabledProdFamily: true,
           disabled: true,
-          allProducts: []
+          allProducts: [],
+          existentProdutsList: []
         }
       },
       methods: {
@@ -91,11 +98,11 @@
           if (!this.productName) {
             global.alert("Por favor insira um produto para liberar os próximos campos.");
           } else {
-            const getProduct = this.allProducts.find(item => item.nome == this.productName.toLowerCase());
+            const getProduct = this.existentProdutsList.find(item => item.name == this.productName.toLowerCase());
       
             if(getProduct){
-              this.inputMeasure = getProduct.medida;
-              this.inputProdFamily = getProduct.tipo;
+              this.inputMeasure = getProduct.measure;
+              this.inputProdFamily = getProduct.productType;
               this.disabledeasure = true;
               this.disabledProdFamily = true;
               this.disabled = false;
@@ -107,50 +114,52 @@
           }
     
         },
-        handleForm(event) {
-          
+        async handleForm(event) {
           event.preventDefault();
-          const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);
+
           const missingInput = !this.productName ||!this.value || !this.inputQtd || !this.inputMeasure || !this.inputProdFamily;
 
           if (event.key === 'Enter' || missingInput) {
             global.alert("Por favor preencha todos os campos.");
             return null;
           } else {
-            const getProduct = this.allProducts.find(item => item.nome == this.productName.toLowerCase());
-      
-            if (getProduct) {
-              console.log('quantidadeInput', this.inputQtd);
-              console.log('quantidadeProduto', getProduct.quantidade);
-              console.log('soma', getProduct.quantidade + this.inputQtd );
-
-              console.log('valorInput', parseFloat(this.value.replace(',', '.')));
-              console.log('valorProduto', getProduct.valor);
-              console.log('soma', getProduct.valor + parseFloat(this.value.replace(',', '.')));
-              const data = {
-                quantidade: getProduct.quantidade + this.inputQtd,
-                valor: getProduct.valor + parseFloat(this.value.replace(',', '.'))
-              }
-
-              updateProductHelper(dateToFetch, getProduct.id, JSON.stringify(data));
-  
-            } else {
-              const newProduct = {
-                nome: this.productName.toLowerCase(),
-                quantidade: this.inputQtd,
-                valor: parseFloat(this.value.replace(',', '.')),
-                medida: this.inputMeasure,
-                tipo: this.inputProdFamily
-              }
-
-              addNewProductHelper(dateToFetch, JSON.stringify(newProduct));
-            }
+            await this.handleUpdateDatabases();
+            
             this.resetInputs();
-            setTimeout(() => {
-              this.getAllProducts();
-            }, 200);
+            await this.getAllProducts();
           }
           
+        },
+        async handleUpdateDatabases() {
+          const getProduct = this.allProducts.find(item => item.name == this.productName.toLowerCase());
+          const existInList = this.existentProdutsList.some(item => item.name == this.productName);
+          const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);
+      
+          if (getProduct) {
+            const data = {
+              quantity: getProduct.quantity + this.inputQtd,
+              value: getProduct.value + parseFloat(this.value.replace(',', '.'))
+            }
+
+            return await updateProductHelper(dateToFetch, getProduct.id, JSON.stringify(data));
+          }
+
+          if (!existInList) {
+            const newProductTolist = {
+              name: this.productName.toLowerCase(),
+              measure: this.inputMeasure,
+              productType: this.inputProdFamily
+            };
+            await addNewProductList(JSON.stringify(newProductTolist));
+          }
+
+          const newProduct = {
+            name: this.productName.toLowerCase(),
+            quantity: this.inputQtd,
+            value: parseFloat(this.value.replace(',', '.')),
+          };
+
+          await addNewProductHelper(dateToFetch, JSON.stringify(newProduct));
         },
         resetInputs() {
           this.productName = '';
@@ -163,9 +172,11 @@
         },
         async getAllProducts() {
           const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);
-          const allProducts = await getAllProductsHelper(dateToFetch);
+          const allMonthProducts = await getAllProductsByDate(dateToFetch);
+          const allProductsList = await getAllProductsList();
 
-          this.allProducts = allProducts;
+          this.allProducts = allMonthProducts;
+          this.existentProdutsList = allProductsList;
         },
         setTimeAndMonth() {
           this.yearsInput = today.getFullYear();

@@ -1,42 +1,763 @@
 {
+  "produtos": [
+    {
+      "id": "f672",
+      "name": "batata",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "164f",
+      "name": "arroz",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "5854",
+      "name": "açúcar",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "d4c2",
+      "name": "atum",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "7421",
+      "name": "azeitona",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "5e02",
+      "name": "batata palha",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "1ba4",
+      "name": "bolachas",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "11df",
+      "name": "bolo pronto",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "caad",
+      "name": "café",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "878e",
+      "name": "cereal",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "cabd",
+      "name": "creme de leite",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "3ee6",
+      "name": "doce de leite",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "c931",
+      "name": "farinha biju",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "52e6",
+      "name": "farinha de trigo",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "06e7",
+      "name": "feijão",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "7f70",
+      "name": "fubá",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "87db",
+      "name": "ketchup",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "bf29",
+      "name": "lasanha",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "c829",
+      "name": "leite",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "73f0",
+      "name": "macarrão",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "111c",
+      "name": "margarina",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "2b94",
+      "name": "massa de pastel",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "467d",
+      "name": "miojo",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "8ba8",
+      "name": "molho de tomate",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "cb11",
+      "name": "nescau",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "ce92",
+      "name": "ovos",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "ad8b",
+      "name": "pão de forma",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "b871",
+      "name": "pão de hamburguer",
+      "measure": "unidade",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "6412",
+      "name": "queijo fatiado",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "64e8",
+      "name": "queijo ralado",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "56dc",
+      "name": "requeijão",
+      "measure": "gramas",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "1182",
+      "name": "salgadinho",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "0099",
+      "name": "salsicha",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "1446",
+      "name": "sorvete",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "7573",
+      "name": "torrada",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "9f65",
+      "name": "wraps",
+      "measure": "pacote",
+      "productType": "Alimentos Geral"
+    },
+    {
+      "id": "1010",
+      "name": "carne moída",
+      "measure": "gramas",
+      "productType": "Açougue"
+    },
+    {
+      "id": "4dff",
+      "name": "coxa/sobrecoxa",
+      "measure": "gramas",
+      "productType": "Açougue"
+    },
+    {
+      "id": "aeef",
+      "name": "filé de frango",
+      "measure": "gramas",
+      "productType": "Açougue"
+    },
+    {
+      "id": "1026",
+      "name": "linguiça",
+      "measure": "gramas",
+      "productType": "Açougue"
+    },
+    {
+      "id": "bafc",
+      "name": "alface",
+      "measure": "unidade",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "b5ab",
+      "name": "alho",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "84f6",
+      "name": "banana",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "294b",
+      "name": "beterraba",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "b224",
+      "name": "cebola",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "94f3",
+      "name": "cebolinha/salsa",
+      "measure": "pacote",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "0742",
+      "name": "cenoura",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "c46d",
+      "name": "limão",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "15bf",
+      "name": "pepino",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "bfed",
+      "name": "rúcula",
+      "measure": "unidade",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "4542",
+      "name": "tomate",
+      "measure": "gramas",
+      "productType": "Hortifruti"
+    },
+    {
+      "id": "1971",
+      "name": "cerveja",
+      "measure": "unidade",
+      "productType": "Bebidas"
+    },
+    {
+      "id": "5bb0",
+      "name": "energético",
+      "measure": "unidade",
+      "productType": "Bebidas"
+    },
+    {
+      "id": "39c1",
+      "name": "refrigerante",
+      "measure": "unidade",
+      "productType": "Bebidas"
+    },
+    {
+      "id": "27cc",
+      "name": "detergente",
+      "measure": "unidade",
+      "productType": "Produtos de Limpeza"
+    },
+    {
+      "id": "cb42",
+      "name": "pano de pia",
+      "measure": "unidade",
+      "productType": "Produtos de Limpeza"
+    },
+    {
+      "id": "ae69",
+      "name": "sabonete",
+      "measure": "unidade",
+      "productType": "Produtos de Limpeza"
+    },
+    {
+      "id": "c75c",
+      "name": "absorvente",
+      "measure": "pacote",
+      "productType": "Outros"
+    },
+    {
+      "id": "c2e7",
+      "name": "condicionador",
+      "measure": "unidade",
+      "productType": "Outros"
+    },
+    {
+      "id": "c5b5",
+      "name": "cotonete",
+      "measure": "pacote",
+      "productType": "Outros"
+    },
+    {
+      "id": "4fee",
+      "name": "pasta de dente",
+      "measure": "unidade",
+      "productType": "Outros"
+    },
+    {
+      "id": "d3c1",
+      "name": "pilhas",
+      "measure": "unidade",
+      "productType": "Outros"
+    },
+    {
+      "id": "8e54",
+      "name": "toalha de papel",
+      "measure": "pacote",
+      "productType": "Outros"
+    }
+  ],
   "janeiro-2024": [],
   "fevereiro-2024": [],
   "março-2024": [],
   "abril-2024": [
     {
-      "id": "8eaf",
-      "nome": "açúcar",
-      "quantidade": 1000,
-      "valor": 4.78,
-      "medida": "gramas",
-      "tipo": "Alimentos Geral"
+      "id": "0abd",
+      "name": "açúcar",
+      "quantity": 1000,
+      "value": 4.78
     },
     {
-      "id": "b296",
-      "nome": "arroz",
-      "quantidade": 3000,
-      "valor": 18.84,
-      "medida": "gramas",
-      "tipo": "Alimentos Geral"
+      "id": "1bb4",
+      "name": "arroz",
+      "quantity": 3000,
+      "value": 18.84
     },
     {
-      "id": "baf5",
-      "nome": "atum",
-      "quantidade": 8,
-      "valor": 47.84,
-      "medida": "unidade",
-      "tipo": "Alimentos Geral"
+      "id": "25f6",
+      "name": "atum",
+      "quantity": 8,
+      "value": 47.84
     },
     {
-      "id": "5794",
-      "nome": "azeitona",
-      "quantidade": 70,
-      "valor": 3.48,
-      "medida": "gramas",
-      "tipo": "Alimentos Geral"
+      "id": "e276",
+      "name": "azeitona",
+      "quantity": 70,
+      "value": 3.48
+    },
+    {
+      "id": "e50b",
+      "name": "batata palha",
+      "quantity": 140,
+      "value": 7.36
+    },
+    {
+      "id": "6bfc",
+      "name": "bolachas",
+      "quantity": 2,
+      "value": 6.96
+    },
+    {
+      "id": "2b15",
+      "name": "café",
+      "quantity": 130,
+      "value": 21.98
+    },
+    {
+      "id": "5c8a",
+      "name": "cereal",
+      "quantity": 1000,
+      "value": 16.98
+    },
+    {
+      "id": "5431",
+      "name": "creme de leite",
+      "quantity": 2,
+      "value": 5.96
+    },
+    {
+      "id": "338d",
+      "name": "doce de leite",
+      "quantity": 400,
+      "value": 12.28
+    },
+    {
+      "id": "17d5",
+      "name": "farinha biju",
+      "quantity": 1,
+      "value": 3.38
+    },
+    {
+      "id": "1a3b",
+      "name": "farinha de trigo",
+      "quantity": 1,
+      "value": 3.78
+    },
+    {
+      "id": "d33f",
+      "name": "feijão",
+      "quantity": 1000,
+      "value": 8.48
+    },
+    {
+      "id": "02a0",
+      "name": "fubá",
+      "quantity": 1,
+      "value": 3.78
+    },
+    {
+      "id": "6ec8",
+      "name": "ketchup",
+      "quantity": 1030,
+      "value": 19.38
+    },
+    {
+      "id": "0a3b",
+      "name": "lasanha",
+      "quantity": 3,
+      "value": 36.54
+    },
+    {
+      "id": "9d85",
+      "name": "leite",
+      "quantity": 4,
+      "value": 18.72
+    },
+    {
+      "id": "f8a2",
+      "name": "macarrão",
+      "quantity": 3,
+      "value": 9.84
+    },
+    {
+      "id": "db76",
+      "name": "margarina",
+      "quantity": 500,
+      "value": 7.48
+    },
+    {
+      "id": "1e6c",
+      "name": "massa de pastel",
+      "quantity": 1,
+      "value": 4.68
+    },
+    {
+      "id": "1320",
+      "name": "miojo",
+      "quantity": 6,
+      "value": 14.1
+    },
+    {
+      "id": "07c5",
+      "name": "molho de tomate",
+      "quantity": 3000,
+      "value": 12.8
+    },
+    {
+      "id": "e95f",
+      "name": "nescau",
+      "quantity": 1000,
+      "value": 19.98
+    },
+    {
+      "id": "2c36",
+      "name": "ovos",
+      "quantity": 60,
+      "value": 41.96
+    },
+    {
+      "id": "b3b9",
+      "name": "pão de forma",
+      "quantity": 2,
+      "value": 11.16
+    },
+    {
+      "id": "2c25",
+      "name": "pão de hamburguer",
+      "quantity": 10,
+      "value": 22.06
+    },
+    {
+      "id": "0e66",
+      "name": "queijo fatiado",
+      "quantity": 1400,
+      "value": 52.88
+    },
+    {
+      "id": "0ed9",
+      "name": "queijo ralado",
+      "quantity": 300,
+      "value": 35.88
+    },
+    {
+      "id": "5b51",
+      "name": "requeijão",
+      "quantity": 500,
+      "value": 11.58
+    },
+    {
+      "id": "2fec",
+      "name": "salgadinho",
+      "quantity": 1,
+      "value": 2.58
+    },
+    {
+      "id": "1f5f",
+      "name": "salsicha",
+      "quantity": 1,
+      "value": 11.18
+    },
+    {
+      "id": "43d3",
+      "name": "sorvete",
+      "quantity": 1,
+      "value": 19.98
+    },
+    {
+      "id": "5312",
+      "name": "torrada",
+      "quantity": 1,
+      "value": 2.78
+    },
+    {
+      "id": "d379",
+      "name": "wraps",
+      "quantity": 1,
+      "value": 9.9
+    },
+    {
+      "id": "c6f4",
+      "name": "carne moída",
+      "quantity": 1220,
+      "value": 24.28
+    },
+    {
+      "id": "a761",
+      "name": "coxa/sobrecoxa",
+      "quantity": 2000,
+      "value": 21.96
+    },
+    {
+      "id": "f366",
+      "name": "filé de frango",
+      "quantity": 2000,
+      "value": 33.96
+    },
+    {
+      "id": "9d28",
+      "name": "linguiça",
+      "quantity": 748,
+      "value": 14.95
+    },
+    {
+      "id": "8930",
+      "name": "alface",
+      "quantity": 7,
+      "value": 22.26
+    },
+    {
+      "id": "caf7",
+      "name": "alho",
+      "quantity": 245,
+      "value": 6.37
+    },
+    {
+      "id": "8230",
+      "name": "banana",
+      "quantity": 1600,
+      "value": 8.93
+    },
+    {
+      "id": "779c",
+      "name": "batata",
+      "quantity": 1885,
+      "value": 9.39
+    },
+    {
+      "id": "7630",
+      "name": "beterraba",
+      "quantity": 1005,
+      "value": 7.01
+    },
+    {
+      "id": "53b0",
+      "name": "cebola",
+      "quantity": 1455,
+      "value": 11.03
+    },
+    {
+      "id": "8f65",
+      "name": "cebolinha/salsa",
+      "quantity": 2,
+      "value": 5.78
+    },
+    {
+      "id": "b77b",
+      "name": "cenoura",
+      "quantity": 875,
+      "value": 7.42
+    },
+    {
+      "id": "8029",
+      "name": "limão",
+      "quantity": 920,
+      "value": 3.39
+    },
+    {
+      "id": "c7b6",
+      "name": "pepino",
+      "quantity": 1125,
+      "value": 5.6
+    },
+    {
+      "id": "7cdf",
+      "name": "rúcula",
+      "quantity": 1,
+      "value": 3.38
+    },
+    {
+      "id": "cfab",
+      "name": "tomate",
+      "quantity": 1050,
+      "value": 6.8
     }
   ],
-  "maio-2024": [],
+  "maio-2024": [
+    {
+      "id": "ca8c",
+      "name": "cerveja",
+      "quantity": 13,
+      "value": 36.34
+    },
+    {
+      "id": "1dc1",
+      "name": "energético",
+      "quantity": 4,
+      "value": 33.56
+    },
+    {
+      "id": "7d45",
+      "name": "refrigerante",
+      "quantity": 9,
+      "value": 16.22
+    },
+    {
+      "id": "9a8b",
+      "name": "detergente",
+      "quantity": 1,
+      "value": 2.58
+    },
+    {
+      "id": "f409",
+      "name": "pano de pia",
+      "quantity": 50,
+      "value": 11.48
+    },
+    {
+      "id": "fa7a",
+      "name": "sabonete",
+      "quantity": 4,
+      "value": 9.92
+    },
+    {
+      "id": "ce23",
+      "name": "absorvente",
+      "quantity": 1,
+      "value": 14.98
+    },
+    {
+      "id": "d54f",
+      "name": "condicionador",
+      "quantity": 1,
+      "value": 19.68
+    },
+    {
+      "id": "68a4",
+      "name": "cotonete",
+      "quantity": 1,
+      "value": 3.98
+    },
+    {
+      "id": "d9e6",
+      "name": "pasta de dente",
+      "quantity": 4,
+      "value": 8.36
+    },
+    {
+      "id": "d85e",
+      "name": "pilhas",
+      "quantity": 4,
+      "value": 17.78
+    },
+    {
+      "id": "8074",
+      "name": "toalha de papel",
+      "quantity": 1,
+      "value": 2.98
+    }
+  ],
   "junho-2024": [],
   "julho-2024": [],
   "agosto-2024": [],

@@ -1,7 +1,17 @@
 const url = 'http://localhost:3000';
 
-const getAllProductsHelper = async (date) =>
+const getAllProductsByDate = async (date) =>
   await fetch(`${url}/${date}`).then(data => data.json());
+
+const getAllProductsList = async () =>
+  await fetch(`${url}/produtos`).then(data => data.json());
+
+const addNewProductList = async (newProduct) =>
+  await fetch(`${url}/produtos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: newProduct
+  }).then(res => res.json());
 
 const updateProductHelper = async (date, id, data) =>
   await fetch(`${url}/${date}/${id}`, {
@@ -19,7 +29,9 @@ const addNewProductHelper = async (year, newProduct) =>
 
 
 export default {
-    getAllProductsHelper,
+    getAllProductsList,
+    addNewProductList,
+    getAllProductsByDate,
     updateProductHelper,
     addNewProductHelper
 };
