@@ -56,7 +56,14 @@ export default {
 
           this.totalExpenses = totalExpenses.toFixed(2);
         }
+      },
+      updateYear() {
+        const today = new Date(Date.now());
+        this.yearsInput = today.getFullYear();
       }
+    },
+    mounted() {
+      this.updateYear();
     }
 }
 </script>
