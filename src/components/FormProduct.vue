@@ -157,6 +157,7 @@
             name: this.productName.toLowerCase(),
             quantity: this.inputQtd,
             value: parseFloat(this.value.replace(',', '.')),
+            measure: this.inputMeasure,
           };
 
           await addNewProductHelper(dateToFetch, JSON.stringify(newProduct));
