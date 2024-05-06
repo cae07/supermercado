@@ -1,11 +1,47 @@
 {
-    "alimento": [
-        {
-            "nome": "arroz",
-            "quantidade": 3000,
-            "valor": 16.00,
-            "medida": "gramas",
-            "tipo": "alimento básico"
-        }
-    ]
+  "janeiro-2024": [],
+  "fevereiro-2024": [],
+  "março-2024": [],
+  "abril-2024": [
+    {
+      "id": "8eaf",
+      "nome": "açúcar",
+      "quantidade": 1000,
+      "valor": 4.78,
+      "medida": "gramas",
+      "tipo": "Alimentos Geral"
+    },
+    {
+      "id": "b296",
+      "nome": "arroz",
+      "quantidade": 3000,
+      "valor": 18.84,
+      "medida": "gramas",
+      "tipo": "Alimentos Geral"
+    },
+    {
+      "id": "baf5",
+      "nome": "atum",
+      "quantidade": 8,
+      "valor": 47.84,
+      "medida": "unidade",
+      "tipo": "Alimentos Geral"
+    },
+    {
+      "id": "5794",
+      "nome": "azeitona",
+      "quantidade": 70,
+      "valor": 3.48,
+      "medida": "gramas",
+      "tipo": "Alimentos Geral"
+    }
+  ],
+  "maio-2024": [],
+  "junho-2024": [],
+  "julho-2024": [],
+  "agosto-2024": [],
+  "setembro-2024": [],
+  "outubro-2024": [],
+  "novembro-2024": [],
+  "dezembro-2024": []
 }

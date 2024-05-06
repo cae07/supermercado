@@ -21,11 +21,12 @@ export default {
     font-size: 1.2em;
     text-decoration: none;
     color: #000;
-    background-color: #00CED1;
+    background-color: #cfcfcf;
 }
 
 .router-btn:hover {
-    background-color: #00FFFF;
-    color: #FF00FF;
+    background-color: #f8f9fa;
+    color: #007bff;
+    font-weight: 700;
 }
 </style>

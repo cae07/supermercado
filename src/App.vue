@@ -31,7 +31,7 @@ export default {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 110vh;
   width: 15vw;
 }
 </style>
