@@ -1,31 +1,61 @@
 const url = 'http://localhost:3000';
 
-const getAllProductsByDate = async (date) =>
-  await fetch(`${url}/${date}`).then(data => data.json());
+const getAllProductsByDate = async (date) => {
+  try {
+    return await fetch(`${url}/${date}`).then(data => data.json());
+    
+  } catch (error) {
+    return [];
+  }
+}
 
-const getAllProductsList = async () =>
-  await fetch(`${url}/produtos`).then(data => data.json());
+const getAllProductsList = async () => {
+  try {
+    return await fetch(`${url}/produtos`).then(data => data.json());
+    
+  } catch (error) {
+    return [];
+  }
+}
 
-const addNewProductList = async (newProduct) =>
-  await fetch(`${url}/produtos`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: newProduct
-  }).then(res => res.json());
+const addNewProductList = async (newProduct) => {
+  try {
+    return await fetch(`${url}/produtos`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: newProduct
+    }).then(res => res.json());
+    
+  } catch (error) {
+    return [];
+  }
+}
 
-const updateProductHelper = async (date, id, data) =>
-  await fetch(`${url}/${date}/${id}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json'},
-    body: data
-  });
+const updateProductHelper = async (date, id, data) => {
+  try {
+    return await fetch(`${url}/${date}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json'},
+      body: data
+    });
+    
+  } catch (error) {
+    return [];
+  }
+}
 
-const addNewProductHelper = async (year, newProduct) => 
-  await fetch(`${url}/${year}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: newProduct
-  }).then(res => res.json());
+const addNewProductHelper = async (year, newProduct) => {
+  try {
+    return await fetch(`${url}/${year}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: newProduct
+    }).then(res => res.json());
+    
+  } catch (error) {
+    return [];
+  }
+}
 
 
 export default {

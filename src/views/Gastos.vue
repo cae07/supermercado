@@ -1,46 +1,23 @@
 <template>
   <div id="main-container">
-    <div class="input-container">
-      <div class="form-group row">
-        <label for="yearsInput" class="col-sm-2 col-form-label">Ano:</label>
-        <div class="col-sm-10">
-          <select @change="calculateExpenses" class="form-control" name="yearsInput" id="yearsInput" v-model="yearsInput">
-            <option value="">Selecione o ano</option>
-            <option v-for="(year, idx) in years" :value="year" :key="idx">
-              {{ year }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="monthInput" class="col-sm-2 col-form-label">Mês:</label>
-        <div class="col-sm-10">
-          <select @change="calculateExpenses" class="form-control" name="monthInput" id="monthInput" v-model="monthInput">
-            <option value="">Selecione o mês</option>
-            <option v-for="(month, idx) in months" :value="month" :key="idx">
-              {{ month }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <InputsMonthYear @monthAndYear="getMonthAndYear" />
     <h1>R$ {{ totalExpenses }}</h1>
   </div>
 </template>
 
 <script>
-import arrays from '../arrays.helpers';
+import InputsMonthYear from '../components/InputsMonthYear.vue';
 import helpers from '../Helpers/fetchHelpers';
 
-const { years, months } = arrays;
 const { getAllProductsByDate } = helpers;
 
 export default {
     name: 'Gastos',
+    components: {
+      InputsMonthYear
+    },
     data() {
         return {
-            years,
-            months,
             yearsInput: '',
             monthInput: '',
             totalExpenses: 0
@@ -52,18 +29,14 @@ export default {
           const dataToFetch = `${this.monthInput.toLowerCase()}-${this.yearsInput}`;
           const allProducts = await getAllProductsByDate(dataToFetch);
 
-          const totalExpenses = allProducts.reduce((prev, curr) => prev + curr.value, 0);
-
-          this.totalExpenses = totalExpenses.toFixed(2);
+          this.totalExpenses = allProducts.reduce((prev, curr) => prev + curr.value, 0).toFixed(2);
         }
       },
-      updateYear() {
-        const today = new Date(Date.now());
-        this.yearsInput = today.getFullYear();
+      async getMonthAndYear({ year, month}) {
+        this.yearsInput = year;
+        this.monthInput = month;
+        await this.calculateExpenses();
       }
-    },
-    mounted() {
-      this.updateYear();
     }
 }
 </script>
@@ -72,23 +45,6 @@ export default {
 #main-container {
   display: flex;
   flex-direction: column;
-}
-
-.input-container { 
-    display: flex;
-    justify-content: space-around;
-    width: 60vw;
-    margin: 50px 0 50px 12vw;
-}
-
-.form-control {
-    width: 250px;
-    box-shadow: 4px 4px 10px #808080;
-}
-
-label {
-  margin-right: -12px;
-  font-size: 1.2em;
 }
 
 h1 {
