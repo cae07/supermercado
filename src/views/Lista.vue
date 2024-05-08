@@ -27,13 +27,6 @@ export default {
   },
   methods: {
     async handleAveragePeriod(period) {
-      await this.getProductsByFilter(period);
-    },
-    async getAllProductsList() {
-      const productsList = await getAllProductsList();
-      this.productsList = productsList;
-    },
-    async getProductsByFilter(period) {
       switch (period) {
         case 'year':
           await this.handleYearPeriod();
@@ -49,43 +42,54 @@ export default {
           break;
       }
     },
+    async getAllProductsList() {
+      const productsList = await getAllProductsList();
+      this.productsList = this.sortItems(productsList);
+    },
     async handleYearPeriod() {
       const today = new Date(Date.now());
       const datesToFetch = this.getDatesToFetch(months, today.getMonth(), today.getFullYear());
 
       const promises = datesToFetch.map(period => getAllProductsByDate(period));
       const productsByPeriod = await Promise.all(promises);
+      const finalList = this.getFinalList(productsByPeriod);
 
-      const finalList = this.productsList.map(product => {
+      this.productsList = this.sortItems(finalList);
+    },
+    async handleSummerPeriod() {
+      const periods = ['dezembro-2024', 'janeiro-2024', 'fevereiro-2024', 'março-2024'];
+
+      const promises = periods.map(period => getAllProductsByDate(period));
+      const productsByPeriod = await Promise.all(promises);
+      const finalList = this.getFinalList(productsByPeriod);
+
+      this.productsList = this.sortItems(finalList);
+    },
+    async handleWinterPeriod() {
+      const periods = ['maio-2024', 'junho-2024', 'julho-2024', 'agosto-2024'];
+
+      const promises = periods.map(period => getAllProductsByDate(period));
+      const productsByPeriod = await Promise.all(promises);
+      const finalList = this.getFinalList(productsByPeriod);
+      
+      this.productsList = this.sortItems(finalList);
+    },
+    getFinalList(productsByPeriod) {
+      const divisor = this.getDivisor(productsByPeriod);
+
+      return this.productsList.map(product => {
         const quantities = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.quantity : 0;
-        });
-
-        const values = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.value : 0;
-        });
-
-        const quantity = quantities.reduce((acc, val) => acc + val, 0);
-        const value = values.reduce((acc, val) => acc + val, 0);
-
-        return {
-          ...product,
-          quantity,
-          value
-        };
+        const foundProduct = period.find(item => item.name === product.name);
+        return foundProduct ? foundProduct.quantity : 0;
       });
 
-      this.productsList = finalList.sort((a, b) => {
-          if (a.productType < b.productType) {
-            return -1;
-          }
-          if (a.productType > b.productType) {
-            return 1;
-          }
-          return 0;
-        });;
+      const quantity = quantities.reduce((acc, val) => acc + val, 0);
+
+      return {
+        ...product,
+        quantity: divisor > 0? quantity / divisor : quantity
+      };
+    });
     },
     getDatesToFetch(array, startIndex, year) {
       const selectedItems = [];
@@ -106,34 +110,8 @@ export default {
 
       return selectedItems;
     },
-    async handleSummerPeriod() {
-      const periods = ['dezembro-2024', 'janeiro-2024', 'fevereiro-2024', 'março-2024'];
-
-      const promises = periods.map(period => getAllProductsByDate(period));
-      const productsByPeriod = await Promise.all(promises);
-
-      const finalList = this.productsList.map(product => {
-        const quantities = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.quantity : 0;
-        });
-
-        const values = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.value : 0;
-        });
-
-        const quantity = quantities.reduce((acc, val) => acc + val, 0);
-        const value = values.reduce((acc, val) => acc + val, 0);
-
-        return {
-          ...product,
-          quantity,
-          value
-        };
-      });
-
-      this.productsList = finalList.sort((a, b) => {
+    sortItems(finalList) {
+      return finalList.sort((a, b) => {
           if (a.productType < b.productType) {
             return -1;
           }
@@ -143,43 +121,16 @@ export default {
           return 0;
         });;
     },
-    async handleWinterPeriod() {
-      const periods = ['maio-2024', 'junho-2024', 'julho-2024', 'agosto-2024'];
-
-      const promises = periods.map(period => getAllProductsByDate(period));
-      const productsByPeriod = await Promise.all(promises);
-
-      const finalList = this.productsList.map(product => {
-        const quantities = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.quantity : 0;
-        });
-
-        const values = productsByPeriod.map(period => {
-          const foundProduct = period.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.value : 0;
-        });
-
-        const quantity = quantities.reduce((acc, val) => acc + val, 0);
-        const value = values.reduce((acc, val) => acc + val, 0);
-
-        return {
-          ...product,
-          quantity,
-          value
-        };
+    getDivisor(productsByPeriod) {
+      let divisor = 0;
+      productsByPeriod.forEach(period => {
+        if (period.length) {
+          divisor += 1;
+        }
       });
 
-      this.productsList = this.productsList = finalList.sort((a, b) => {
-          if (a.productType < b.productType) {
-            return -1;
-          }
-          if (a.productType > b.productType) {
-            return 1;
-          }
-          return 0;
-        });;
-    },
+      return divisor;
+    }
   },
   mounted() {
     this.getAllProductsList();

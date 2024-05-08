@@ -1,20 +1,21 @@
 <template>
   <div class="container mt-5">
-    {{ console.log(productsList) }}
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead class="table-light">
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Media</th>
-            <th scope="col">Medida</th>
+            <th id="product-type-colum" scope="col">Tipo de Produto</th>
+            <th scope="col">Nome</th>
+            <th class="end-coluns" scope="col">Média</th>
+            <th class="end-coluns" scope="col">Medida</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in items" :key="index">
-            <td>{{ item.name }}</td>
-            <td>{{ item.media }}</td>
-            <td>{{ item.medida }}</td>
+          <tr v-for="product in productsList" :key="product.id">
+            <td>{{ product.productType }}</td>
+            <td>{{ product.name }}</td>
+            <td class="end-coluns">{{ product.quantity }}</td>
+            <td class="end-coluns">{{ product.measure }}</td>
           </tr>
         </tbody>
       </table>
@@ -44,7 +45,7 @@ export default {
 
 <style scoped>
 .container {
-  max-width: 600px;
+  max-width: 60vw
 }
 
 .table {
@@ -53,5 +54,13 @@ export default {
 
 .table th, .table td {
   border: 1px solid #f0f0f0;
+}
+
+#product-type-colum {
+  width: 14vw;
+}
+
+.end-coluns {
+  text-align: center;
 }
 </style>
