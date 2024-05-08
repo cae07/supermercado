@@ -31,7 +31,7 @@ import arrays from '../arrays.helpers';
 const { years, months } = arrays;
 
 export default {
-    name: 'InputsMontYear',
+    name: 'InputsMonthYear',
     data() {
         return {
             years,
