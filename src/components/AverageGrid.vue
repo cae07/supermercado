@@ -29,16 +29,7 @@ export default {
   name: 'AverageGrid',
   props: {
     productsList: Array
-  },
-  data() {
-    return {
-      items: [
-        { name: 'Item 1', media: 10, medida: 'cm' },
-        { name: 'Item 2', media: 8, medida: 'kg' },
-        { name: 'Item 3', media: 15, medida: 'm' }
-      ]
-    };
-  },
+  }
 }
 
 </script>
