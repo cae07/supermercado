@@ -8,6 +8,16 @@ const routes = [
     component: Home
   },
   {
+    path: '/inserir_produtos',
+    name: 'inserirProdutos',
+    component: () => import('../views/InserirProdutos.vue')
+  },
+  {
+    path: '/inserir_gastos',
+    name: 'inserirGastos',
+    component: () => import('../views/InserirGastos.vue')
+  },
+  {
     path: '/lista',
     name: 'lista',
     component: () => import('../views/Lista.vue')
