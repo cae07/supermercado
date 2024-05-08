@@ -79,17 +79,17 @@ export default {
 
       return this.productsList.map(product => {
         const quantities = productsByPeriod.map(period => {
-        const foundProduct = period.find(item => item.name === product.name);
-        return foundProduct ? foundProduct.quantity : 0;
+          const foundProduct = period.find(item => item.name === product.name);
+          return foundProduct ? foundProduct.quantity : 0;
+        });
+
+        const quantity = quantities.reduce((acc, val) => acc + val, 0);
+
+        return {
+          ...product,
+          quantity: divisor > 0? quantity / divisor : quantity
+        };
       });
-
-      const quantity = quantities.reduce((acc, val) => acc + val, 0);
-
-      return {
-        ...product,
-        quantity: divisor > 0? quantity / divisor : quantity
-      };
-    });
     },
     getDatesToFetch(array, startIndex, year) {
       const selectedItems = [];
