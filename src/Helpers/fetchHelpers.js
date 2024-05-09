@@ -33,9 +33,16 @@ const getExpensesByYear = async (year) =>
   await fetch(`${url}/gastos-${year}`)
     .then(data => data.json());
 
-const updateExpense = async (year, id, expense) =>
+const updateExpenseWithId = async (year, id, expense) =>
   fetch(`${url}/gastos-${year}/${id}`, {
     method: 'PATCH',
+    headers: { 'Content-Type': 'application/json'},
+    body: expense
+  });
+
+const updateNewMonthExpense = async (year, expense) =>
+  fetch(`${url}/gastos-${year}`, {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: expense
   });
@@ -47,5 +54,6 @@ export default {
     updateProductHelper,
     addNewProductHelper,
     getExpensesByYear,
-    updateExpense
+    updateExpenseWithId,
+    updateNewMonthExpense
 };

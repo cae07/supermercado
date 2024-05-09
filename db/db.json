@@ -1268,20 +1268,8 @@
       "id": "Janeiro",
       "gastos": {
         "Carro": {
-          "combustível": 257,
-          "arruma vidro": 164
-        },
-        "Casa": {
-          "aluguel": 1600,
-          "luz": 124
-        },
-        "Alimentação": {
-          "pizza mahori": 145
+          "gasolina": 212.24
         }
-      },
-      "ganhos": {
-        "Salário Caê": 2000,
-        "Salário Carol": 1000
       }
     }
   ],

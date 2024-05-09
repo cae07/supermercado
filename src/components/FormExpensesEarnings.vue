@@ -47,7 +47,8 @@ import helpers from '@/Helpers/fetchHelpers';
 
 const {
     getExpensesByYear,
-    updateExpense
+    updateExpenseWithId,
+    updateNewMonthExpense
 } = helpers;
 
 export default {
@@ -76,28 +77,64 @@ export default {
             const key = this.inputExpenseFamily;
             const description = this.expenseDescription;
             const value = parseFloat(this.expenseValue.replace(',', '.'));
-            let expense = {};
 
             const getExpenses = await getExpensesByYear(year);
             const getMonthExpenses = getExpenses.find(item => item.id === month);
 
-            const updatedGastos = {
-                ...getMonthExpenses.gastos,
-                [key]: {
-                    ...(getMonthExpenses.gastos[key] || {}),
-                    [description]: (getMonthExpenses.gastos[key]?.[description] || 0) + value
+            if (getMonthExpenses) {
+                const updatedExpenses = {
+                    ...getMonthExpenses.gastos,
+                    [key]: {
+                        ...(getMonthExpenses.gastos[key] || {}),
+                        [description]: (getMonthExpenses.gastos[key]?.[description] || 0) + value
+                    }
+                };
+    
+                const expense = { gastos: updatedExpenses };
+                await updateExpenseWithId(year, month, JSON.stringify(expense));
+            } else {
+                const expense = {
+                    id: month,
+                    gastos: {
+                        [key]: { [description]: value }
+                    }
                 }
-            };
 
-            expense = { gastos: updatedGastos };
-
-            await updateExpense(year, month, JSON.stringify(expense));
+                await updateNewMonthExpense(year, JSON.stringify(expense));
+            }
 
             this.clearAllInputs();
         },
-        handleEarnings(event) {
+        async handleEarnings(event) {
             event.preventDefault();
             if (!this.validateEarningsInputs()) return;
+            const { year, month } = this.handleDate;
+
+            const description = this.earningDescription;
+            const value = parseFloat(this.earningValue.replace(',','.'));
+
+            const getExpenses = await getExpensesByYear(year);
+            const getMonthExpenses = getExpenses.find(expense => expense.id === month);
+
+            if (getMonthExpenses) {
+                const updatedExpenses = {
+                    ...getMonthExpenses.ganhos,
+                    [description]: (getMonthExpenses.ganhos[description] || 0) + value
+
+                };
+
+                const expense = { ganhos: updatedExpenses };
+                await updateExpenseWithId(year, month, JSON.stringify(expense));
+            } else {
+                const expense = {
+                    id: month,
+                    ganhos: {
+                        [key]: { [description]: value }
+                    }
+                }
+
+                await updateNewMonthExpense(year, JSON.stringify(expense));
+            }
             
             this.clearAllInputs();
         },
