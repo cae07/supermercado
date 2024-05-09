@@ -4,7 +4,6 @@
         <label for="yearsInput" class="col-sm-2 col-form-label">Ano:</label>
         <div class="col-sm-10">
           <select @change="getMonthAndYear" class="form-control" name="yearsInput" id="yearsInput" v-model="yearsInput">
-            <option value="">Selecione o ano</option>
             <option v-for="(year, idx) in years" :value="year" :key="idx">
               {{ year }}
             </option>
