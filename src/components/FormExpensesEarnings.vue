@@ -1,5 +1,5 @@
 <template>
-            <div id="forms-container" v-if="handleForm.isHabilit">
+        <div v-if="handleForm.isHabilit">
             <form v-if="handleForm.isExpenses" class="container">
                 <div class="form-group">
                     <label for="input-description">Descrição:</label>
@@ -43,6 +43,12 @@
 
 <script>
 import expensesType from '@/arrays.helpers/expensesType';
+import helpers from '@/Helpers/fetchHelpers';
+
+const {
+    getExpensesByYear,
+    updateExpense
+} = helpers;
 
 export default {
     name: 'FormExpensesEarnings',
@@ -62,10 +68,31 @@ export default {
         }
     },
     methods: {
-        handleExpenses(event) {
+        async handleExpenses(event) {
             event.preventDefault();
             if (!this.validateExpensesInputs()) return;
-            
+            const { year, month } = this.handleDate;
+
+            const key = this.inputExpenseFamily;
+            const description = this.expenseDescription;
+            const value = parseFloat(this.expenseValue.replace(',', '.'));
+            let expense = {};
+
+            const getExpenses = await getExpensesByYear(year);
+            const getMonthExpenses = getExpenses.find(item => item.id === month);
+
+            const updatedGastos = {
+                ...getMonthExpenses.gastos,
+                [key]: {
+                    ...(getMonthExpenses.gastos[key] || {}),
+                    [description]: (getMonthExpenses.gastos[key]?.[description] || 0) + value
+                }
+            };
+
+            expense = { gastos: updatedGastos };
+
+            await updateExpense(year, month, JSON.stringify(expense));
+
             this.clearAllInputs();
         },
         handleEarnings(event) {
@@ -84,7 +111,7 @@ export default {
         },
         triggerAlerts(missingInput, isExpense) {
             let isValid = true;
-            const validNumberRegex = /^\d+$/;
+            const validNumberRegex = /^[\d.,]+$/
             const isExpensesNumberValid = validNumberRegex.test(this.expenseValue);
             const isEarningsNumberValid = validNumberRegex.test(this.earningValue);
 
@@ -117,11 +144,6 @@ export default {
 </script>
 
 <style scoped>
-
-#forms-container {
-    margin-top: 60px;
-}
-
 .container {
   max-width: 500px;
   margin: auto;

@@ -1262,5 +1262,33 @@
   "setembro-2024": [],
   "outubro-2024": [],
   "novembro-2024": [],
-  "dezembro-2024": []
+  "dezembro-2024": [],
+  "gastos-2024": [
+    {
+      "id": "Janeiro",
+      "gastos": {
+        "Carro": {
+          "combustível": 257,
+          "arruma vidro": 164
+        },
+        "Casa": {
+          "aluguel": 1600,
+          "luz": 124
+        },
+        "Alimentação": {
+          "pizza mahori": 145
+        }
+      },
+      "ganhos": {
+        "Salário Caê": 2000,
+        "Salário Carol": 1000
+      }
+    }
+  ],
+  "gastos-2025": [],
+  "gastos-2026": [],
+  "gastos-2027": [],
+  "gastos-2028": [],
+  "gastos-2029": [],
+  "gastos-2030": []
 }
