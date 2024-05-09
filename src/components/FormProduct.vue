@@ -170,6 +170,7 @@
           this.inputProdFamily = '';
           this.disabledeasure = true;
           this.disabledProdFamily = true;
+          this.disabled = true;
         },
         async getAllProducts() {
           const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);

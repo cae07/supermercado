@@ -1,16 +1,59 @@
 <template>
     <nav>
-      <router-link class="router-btn" to="/">Página Inicial</router-link>
-      <router-link class="router-btn" to="/inserir_produtos">Lançar Produtos</router-link>
-      <router-link class="router-btn" to="/lista">Lista Mercado</router-link>
-      <router-link class="router-btn" to="/inserir_gastos">Lançar Gastos</router-link>
-      <router-link class="router-btn" to="/gastos">Gastos</router-link>
+      <router-link @click="handleClick('initialPage')" class="router-btn" :class="{ 'clicked': initialPage }" to="/">Página Inicial</router-link>
+      <router-link @click="handleClick('insertProducts')" class="router-btn" :class="{ 'clicked': insertProducts }" to="/inserir_produtos">Lançar Produtos</router-link>
+      <router-link @click="handleClick('marketList')" class="router-btn" :class="{ 'clicked': marketList }" to="/lista">Lista Mercado</router-link>
+      <router-link @click="handleClick('launchExpenses')" class="router-btn" :class="{ 'clicked': launchExpenses }" to="/inserir_gastos">Lançar Gastos</router-link>
+      <router-link @click="handleClick('expenses')" class="router-btn" :class="{ 'clicked': expenses }" to="/gastos">Gastos</router-link>
     </nav>
 </template>
 
 <script>
 export default {
-    name: 'Aside'
+    name: 'Aside',
+    data() {
+        return {
+            initialPage: false,
+            insertProducts: false,
+            marketList: false,
+            launchExpenses: false,
+            expenses: false,
+        }
+    },
+    methods: {
+        handleClick(button) {
+            this.initialPage = false;
+            this.insertProducts = false;
+            this.marketList = false;
+            this.launchExpenses = false;
+            this.expenses = false;
+            this[button] = true;
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            const url = this.$route.fullPath;
+            switch (url) {
+                case '/':
+                    this.initialPage = true;
+                    break;
+                case '/inserir_produtos':
+                    this.insertProducts = true;
+                    break;
+                case '/inserir_gastos':
+                    this.launchExpenses = true;
+                    break;
+                case '/lista':
+                    this.marketList = true;
+                    break;
+                case '/gastos':
+                    this.expenses = true;
+                    break;
+                default:
+                    break;
+            }
+        }, 70);
+    }
 }
 </script>
 
@@ -28,6 +71,12 @@ export default {
 }
 
 .router-btn:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    font-weight: 700;
+}
+
+.clicked {
     background-color: #f8f9fa;
     color: #007bff;
     font-weight: 700;

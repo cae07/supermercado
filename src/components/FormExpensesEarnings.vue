@@ -65,8 +65,6 @@ export default {
         handleExpenses(event) {
             event.preventDefault();
             if (!this.validateExpensesInputs()) return;
-
-            console.log('handleDate', this.handleDate);
             
             this.clearAllInputs();
         },
