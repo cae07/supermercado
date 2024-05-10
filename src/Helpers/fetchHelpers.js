@@ -6,29 +6,6 @@ const getAllProductsByDate = async (date) =>
 const getAllProductsList = async () =>
   await fetch(`${url}/produtos`).then(data => data.json());
 
-
-
-const addNewProductList = async (newProduct) =>
-  await fetch(`${url}/produtos`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: newProduct
-    }).then(res => res.json());
-
-const updateProductHelper = async (date, id, data) =>
-    await fetch(`${url}/${date}/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json'},
-      body: data
-    });
-
-const addNewProductHelper = async (year, newProduct) =>
-  await fetch(`${url}/${year}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: newProduct
-  }).then(res => res.json());
-
 const getExpensesByYear = async (year) =>
   await fetch(`${url}/gastos-${year}`)
     .then(data => data.json());
@@ -47,13 +24,36 @@ const updateNewMonthExpense = async (year, expense) =>
     body: expense
   });
 
+  const getAllMarketProductsByYear = async (year) =>
+    await fetch(`${url}/mercado-${year}`).then(data => data.json());
+
+  const postNewMonthProduct = async (year, newProduct) =>
+    fetch(`${url}/mercado-${year}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: newProduct
+    });
+
+  const updateProductsWithId = async (year, id, products) =>
+    fetch(`${url}/mercado-${year}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json'},
+      body: products
+    });
+
+  const deleteMarketMonth = (year, month) =>
+    fetch(`${url}/mercado-${year}/${month}`, {
+      method: 'DELETE'
+    })
+
 export default {
     getAllProductsList,
-    addNewProductList,
     getAllProductsByDate,
-    updateProductHelper,
-    addNewProductHelper,
     getExpensesByYear,
     updateExpenseWithId,
-    updateNewMonthExpense
+    updateNewMonthExpense,
+    getAllMarketProductsByYear,
+    postNewMonthProduct,
+    updateProductsWithId,
+    deleteMarketMonth
 };

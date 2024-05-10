@@ -64,10 +64,10 @@
     const { years, months, measure, productFamily } = arrays;
     const {
       getAllProductsList,
-      addNewProductList,
-      getAllProductsByDate,
-      updateProductHelper,
-      addNewProductHelper
+      getAllMarketProductsByYear,
+      postNewMonthProduct,
+      deleteMarketMonth,
+      updateProductsWithId
     } = helpers;
     const today = new Date(Date.now());
     
@@ -118,9 +118,13 @@
           event.preventDefault();
 
           const missingInput = !this.productName ||!this.value || !this.inputQtd || !this.inputMeasure || !this.inputProdFamily;
+          const validNumberRegex = /^[\d.,]+$/;
 
           if (event.key === 'Enter' || missingInput) {
             global.alert("Por favor preencha todos os campos.");
+            return null;
+          } else if (validNumberRegex.test(this.value)) {
+            global.alert("Por favor digite um número válido.");
             return null;
           } else {
             await this.handleUpdateDatabases();
@@ -131,37 +135,71 @@
           
         },
         async handleUpdateDatabases() {
-          const getProduct = this.allProducts.find(item => item.name == this.productName.toLowerCase());
-          const existInList = this.existentProdutsList.some(item => item.name == this.productName);
-          const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);
-      
-          if (getProduct) {
-            const data = {
-              quantity: getProduct.quantity + this.inputQtd,
-              value: getProduct.value + parseFloat(this.value.replace(',', '.'))
+            const monthProducts = this.allProducts.find(product => product?.id === this.monthInput);
+
+            if (monthProducts) {
+                await this.updateExistingMonth(monthProducts);
+            } else {
+                await this.createNewMonth();
             }
-
-            return await updateProductHelper(dateToFetch, getProduct.id, JSON.stringify(data));
-          }
-
-          if (!existInList) {
-            const newProductTolist = {
-              name: this.productName.toLowerCase(),
-              measure: this.inputMeasure,
-              productType: this.inputProdFamily
-            };
-            await addNewProductList(JSON.stringify(newProductTolist));
-          }
-
-          const newProduct = {
-            name: this.productName.toLowerCase(),
-            quantity: this.inputQtd,
-            value: parseFloat(this.value.replace(',', '.')),
-            measure: this.inputMeasure,
-          };
-
-          await addNewProductHelper(dateToFetch, JSON.stringify(newProduct));
         },
+
+        async updateExistingMonth(monthProducts) {
+            const { produtos } = monthProducts;
+            const productIndex = produtos.findIndex(item => item.name === this.productName);
+
+            if (productIndex !== -1) {
+                await this.updateExistingProduct(monthProducts, productIndex);
+            } else {
+                await this.addNewProductToMonth(monthProducts);
+            }
+        },
+
+        async updateExistingProduct(monthProducts, productIndex) {
+            const existProduct = monthProducts.produtos[productIndex];
+            const productUpdate = {
+                name: existProduct.name,
+                quantity: existProduct.quantity + this.inputQtd,
+                value: existProduct.value + parseFloat(this.value.replace(',', '.'))
+            };
+
+            monthProducts.produtos.splice(productIndex, 1, productUpdate);
+            this.allProducts = this.allProducts.map(item => (item.id === this.monthInput ? monthProducts : item));
+
+            await updateProductsWithId(this.yearsInput, this.monthInput, JSON.stringify({ produtos: monthProducts.produtos }));
+        },
+
+        async addNewProductToMonth(monthProducts) {
+            const newProduct = {
+                name: this.productName,
+                quantity: this.inputQtd,
+                value: parseFloat(this.value.replace(',', '.'))
+            };
+
+            monthProducts.produtos.push(newProduct);
+            this.allProducts = [...this.allProducts.filter(item => item.id !== this.monthInput), monthProducts];
+
+            await deleteMarketMonth(this.yearsInput, this.monthInput);
+            await postNewMonthProduct(this.yearsInput, JSON.stringify(monthProducts));
+        },
+
+        async createNewMonth() {
+            const newMonth = {
+                id: this.monthInput,
+                produtos: [
+                    {
+                        name: this.productName,
+                        quantity: this.inputQtd,
+                        value: parseFloat(this.value.replace(',', '.'))
+                    }
+                ]
+            };
+
+            this.allProducts.push(newMonth);
+
+            await postNewMonthProduct(this.yearsInput, JSON.stringify(newMonth));
+        },
+
         resetInputs() {
           this.productName = '';
           this.inputQtd = '';
@@ -173,11 +211,10 @@
           this.disabled = true;
         },
         async getAllProducts() {
-          const dateToFetch = this.monthInput.toLowerCase().concat('-').concat(this.yearsInput);
-          const allMonthProducts = await getAllProductsByDate(dateToFetch);
+          const allMarketYearProducts = await getAllMarketProductsByYear(this.yearsInput);
           const allProductsList = await getAllProductsList();
 
-          this.allProducts = allMonthProducts;
+          this.allProducts = allMarketYearProducts;
           this.existentProdutsList = allProductsList;
         },
         setTimeAndMonth() {

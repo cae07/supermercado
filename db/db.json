@@ -487,782 +487,659 @@
       "productType": "Outros"
     }
   ],
-  "janeiro-2024": [],
-  "fevereiro-2024": [],
-  "março-2024": [],
-  "abril-2024": [
+  "mercado-2024": [
     {
-      "id": "0abd",
-      "name": "açúcar",
-      "quantity": 1000,
-      "value": 4.78
+      "id": "Abril",
+      "produtos": [
+        {
+          "name": "açúcar",
+          "quantity": 1000,
+          "value": 4.78
+        },
+        {
+          "name": "arroz",
+          "quantity": 3000,
+          "value": 18.84
+        },
+        {
+          "name": "atum",
+          "quantity": 8,
+          "value": 47.8
+        },
+        {
+          "name": "azeitona",
+          "quantity": 70,
+          "value": 3.48
+        },
+        {
+          "name": "batata palha",
+          "quantity": 140,
+          "value": 7.36
+        },
+        {
+          "name": "bolachas",
+          "quantity": 2,
+          "value": 6.96
+        },
+        {
+          "name": "bolo pronto",
+          "quantity": 1,
+          "value": 5.88
+        },
+        {
+          "name": "café",
+          "quantity": 130,
+          "value": 21.98
+        },
+        {
+          "name": "cereal",
+          "quantity": 1000,
+          "value": 16.98
+        },
+        {
+          "name": "creme de leite",
+          "quantity": 2,
+          "value": 5.96
+        },
+        {
+          "name": "doce de leite",
+          "quantity": 400,
+          "value": 12.28
+        },
+        {
+          "name": "farinha biju",
+          "quantity": 1,
+          "value": 3.3
+        },
+        {
+          "name": "farinha de trigo",
+          "quantity": 1,
+          "value": 3.78
+        },
+        {
+          "name": "feijão",
+          "quantity": 1000,
+          "value": 8.48
+        },
+        {
+          "name": "fubá",
+          "quantity": 1,
+          "value": 3.78
+        },
+        {
+          "name": "ketchup",
+          "quantity": 1030,
+          "value": 19.38
+        },
+        {
+          "name": "lasanha",
+          "quantity": 3,
+          "value": 36.54
+        },
+        {
+          "name": "leite",
+          "quantity": 4,
+          "value": 18.72
+        },
+        {
+          "name": "macarrão",
+          "quantity": 3,
+          "value": 9.84
+        },
+        {
+          "name": "margarina",
+          "quantity": 500,
+          "value": 7.48
+        },
+        {
+          "name": "massa de pastel",
+          "quantity": 1,
+          "value": 4.68
+        },
+        {
+          "name": "miojo",
+          "quantity": 6,
+          "value": 14.1
+        },
+        {
+          "name": "molho de tomate",
+          "quantity": 3000,
+          "value": 12.8
+        },
+        {
+          "name": "nescau",
+          "quantity": 1000,
+          "value": 19.98
+        },
+        {
+          "name": "ovos",
+          "quantity": 60,
+          "value": 41.96
+        },
+        {
+          "name": "pão de forma",
+          "quantity": 2,
+          "value": 11.16
+        },
+        {
+          "name": "pão de hamburguer",
+          "quantity": 10,
+          "value": 22.06
+        },
+        {
+          "name": "queijo fatiado",
+          "quantity": 1400,
+          "value": 52.88
+        },
+        {
+          "name": "queijo ralado",
+          "quantity": 300,
+          "value": 35.88
+        },
+        {
+          "name": "requeijão",
+          "quantity": 500,
+          "value": 11.58
+        },
+        {
+          "name": "salgadinho",
+          "quantity": 1,
+          "value": 2.58
+        },
+        {
+          "name": "salsicha",
+          "quantity": 1,
+          "value": 11.18
+        },
+        {
+          "name": "sorvete",
+          "quantity": 1,
+          "value": 19.98
+        },
+        {
+          "name": "torrada",
+          "quantity": 1,
+          "value": 2.78
+        },
+        {
+          "name": "wraps",
+          "quantity": 1,
+          "value": 9.9
+        },
+        {
+          "name": "carne moída",
+          "quantity": 1220,
+          "value": 24.28
+        },
+        {
+          "name": "coxa/sobrecoxa",
+          "quantity": 2000,
+          "value": 21.96
+        },
+        {
+          "name": "filé de frango",
+          "quantity": 2000,
+          "value": 33.96
+        },
+        {
+          "name": "linguiça",
+          "quantity": 748,
+          "value": 14.95
+        },
+        {
+          "name": "alface",
+          "quantity": 7,
+          "value": 22.26
+        },
+        {
+          "name": "alho",
+          "quantity": 245,
+          "value": 6.37
+        },
+        {
+          "name": "banana",
+          "quantity": 1600,
+          "value": 8.93
+        },
+        {
+          "name": "batata",
+          "quantity": 1885,
+          "value": 9.39
+        },
+        {
+          "name": "beterraba",
+          "quantity": 1005,
+          "value": 7.01
+        },
+        {
+          "name": "cebola",
+          "quantity": 1455,
+          "value": 11.03
+        },
+        {
+          "name": "cebolinha/salsa",
+          "quantity": 2,
+          "value": 5.78
+        },
+        {
+          "name": "cenoura",
+          "quantity": 875,
+          "value": 7.42
+        },
+        {
+          "name": "limão",
+          "quantity": 920,
+          "value": 3.39
+        },
+        {
+          "name": "pepino",
+          "quantity": 1125,
+          "value": 5.6
+        },
+        {
+          "name": "rúcula",
+          "quantity": 1,
+          "value": 3.38
+        },
+        {
+          "name": "tomate",
+          "quantity": 1050,
+          "value": 6.8
+        },
+        {
+          "name": "cerveja",
+          "quantity": 13,
+          "value": 36.34
+        },
+        {
+          "name": "energético",
+          "quantity": 4,
+          "value": 33.56
+        },
+        {
+          "name": "refrigerante",
+          "quantity": 9,
+          "value": 16.22
+        },
+        {
+          "name": "detergente",
+          "quantity": 1,
+          "value": 2.58
+        },
+        {
+          "name": "pano de pia",
+          "quantity": 50,
+          "value": 11.48
+        },
+        {
+          "name": "sabonete",
+          "quantity": 4,
+          "value": 9.92
+        },
+        {
+          "name": "absorvente",
+          "quantity": 1,
+          "value": 14.98
+        },
+        {
+          "name": "condicionador",
+          "quantity": 1,
+          "value": 19.68
+        },
+        {
+          "name": "cotonete",
+          "quantity": 1,
+          "value": 3.98
+        },
+        {
+          "name": "pasta de dente",
+          "quantity": 4,
+          "value": 8.36
+        },
+        {
+          "name": "pilhas",
+          "quantity": 4,
+          "value": 17.78
+        },
+        {
+          "name": "toalha de papel",
+          "quantity": 1,
+          "value": 2.98
+        }
+      ]
     },
     {
-      "id": "1bb4",
-      "name": "arroz",
-      "quantity": 3000,
-      "value": 18.84
-    },
-    {
-      "id": "25f6",
-      "name": "atum",
-      "quantity": 8,
-      "value": 47.8
-    },
-    {
-      "id": "e276",
-      "name": "azeitona",
-      "quantity": 70,
-      "value": 3.48
-    },
-    {
-      "id": "e50b",
-      "name": "batata palha",
-      "quantity": 140,
-      "value": 7.36
-    },
-    {
-      "id": "6bfc",
-      "name": "bolachas",
-      "quantity": 2,
-      "value": 6.96
-    },
-    {
-      "id": "6bfc3",
-      "name": "bolo pronto",
-      "quantity": 1,
-      "value": 5.88
-    },
-    {
-      "id": "2b15",
-      "name": "café",
-      "quantity": 130,
-      "value": 21.98
-    },
-    {
-      "id": "5c8a",
-      "name": "cereal",
-      "quantity": 1000,
-      "value": 16.98
-    },
-    {
-      "id": "5431",
-      "name": "creme de leite",
-      "quantity": 2,
-      "value": 5.96
-    },
-    {
-      "id": "338d",
-      "name": "doce de leite",
-      "quantity": 400,
-      "value": 12.28
-    },
-    {
-      "id": "17d5",
-      "name": "farinha biju",
-      "quantity": 1,
-      "value": 3.3
-    },
-    {
-      "id": "1a3b",
-      "name": "farinha de trigo",
-      "quantity": 1,
-      "value": 3.78
-    },
-    {
-      "id": "d33f",
-      "name": "feijão",
-      "quantity": 1000,
-      "value": 8.48
-    },
-    {
-      "id": "02a0",
-      "name": "fubá",
-      "quantity": 1,
-      "value": 3.78
-    },
-    {
-      "id": "6ec8",
-      "name": "ketchup",
-      "quantity": 1030,
-      "value": 19.38
-    },
-    {
-      "id": "0a3b",
-      "name": "lasanha",
-      "quantity": 3,
-      "value": 36.54
-    },
-    {
-      "id": "9d85",
-      "name": "leite",
-      "quantity": 4,
-      "value": 18.72
-    },
-    {
-      "id": "f8a2",
-      "name": "macarrão",
-      "quantity": 3,
-      "value": 9.84
-    },
-    {
-      "id": "db76",
-      "name": "margarina",
-      "quantity": 500,
-      "value": 7.48
-    },
-    {
-      "id": "1e6c",
-      "name": "massa de pastel",
-      "quantity": 1,
-      "value": 4.68
-    },
-    {
-      "id": "1320",
-      "name": "miojo",
-      "quantity": 6,
-      "value": 14.1
-    },
-    {
-      "id": "07c5",
-      "name": "molho de tomate",
-      "quantity": 3000,
-      "value": 12.8
-    },
-    {
-      "id": "e95f",
-      "name": "nescau",
-      "quantity": 1000,
-      "value": 19.98
-    },
-    {
-      "id": "2c36",
-      "name": "ovos",
-      "quantity": 60,
-      "value": 41.96
-    },
-    {
-      "id": "b3b9",
-      "name": "pão de forma",
-      "quantity": 2,
-      "value": 11.16
-    },
-    {
-      "id": "2c25",
-      "name": "pão de hamburguer",
-      "quantity": 10,
-      "value": 22.06
-    },
-    {
-      "id": "0e66",
-      "name": "queijo fatiado",
-      "quantity": 1400,
-      "value": 52.88
-    },
-    {
-      "id": "0ed9",
-      "name": "queijo ralado",
-      "quantity": 300,
-      "value": 35.88
-    },
-    {
-      "id": "5b51",
-      "name": "requeijão",
-      "quantity": 500,
-      "value": 11.58
-    },
-    {
-      "id": "2fec",
-      "name": "salgadinho",
-      "quantity": 1,
-      "value": 2.58
-    },
-    {
-      "id": "1f5f",
-      "name": "salsicha",
-      "quantity": 1,
-      "value": 11.18
-    },
-    {
-      "id": "43d3",
-      "name": "sorvete",
-      "quantity": 1,
-      "value": 19.98
-    },
-    {
-      "id": "5312",
-      "name": "torrada",
-      "quantity": 1,
-      "value": 2.78
-    },
-    {
-      "id": "d379",
-      "name": "wraps",
-      "quantity": 1,
-      "value": 9.9
-    },
-    {
-      "id": "c6f4",
-      "name": "carne moída",
-      "quantity": 1220,
-      "value": 24.28
-    },
-    {
-      "id": "a761",
-      "name": "coxa/sobrecoxa",
-      "quantity": 2000,
-      "value": 21.96
-    },
-    {
-      "id": "f366",
-      "name": "filé de frango",
-      "quantity": 2000,
-      "value": 33.96
-    },
-    {
-      "id": "9d28",
-      "name": "linguiça",
-      "quantity": 748,
-      "value": 14.95
-    },
-    {
-      "id": "8930",
-      "name": "alface",
-      "quantity": 7,
-      "value": 22.26
-    },
-    {
-      "id": "caf7",
-      "name": "alho",
-      "quantity": 245,
-      "value": 6.37
-    },
-    {
-      "id": "8230",
-      "name": "banana",
-      "quantity": 1600,
-      "value": 8.93
-    },
-    {
-      "id": "779c",
-      "name": "batata",
-      "quantity": 1885,
-      "value": 9.39
-    },
-    {
-      "id": "7630",
-      "name": "beterraba",
-      "quantity": 1005,
-      "value": 7.01
-    },
-    {
-      "id": "53b0",
-      "name": "cebola",
-      "quantity": 1455,
-      "value": 11.03
-    },
-    {
-      "id": "8f65",
-      "name": "cebolinha/salsa",
-      "quantity": 2,
-      "value": 5.78
-    },
-    {
-      "id": "b77b",
-      "name": "cenoura",
-      "quantity": 875,
-      "value": 7.42
-    },
-    {
-      "id": "8029",
-      "name": "limão",
-      "quantity": 920,
-      "value": 3.39
-    },
-    {
-      "id": "c7b6",
-      "name": "pepino",
-      "quantity": 1125,
-      "value": 5.6
-    },
-    {
-      "id": "7cdf",
-      "name": "rúcula",
-      "quantity": 1,
-      "value": 3.38
-    },
-    {
-      "id": "cfab",
-      "name": "tomate",
-      "quantity": 1050,
-      "value": 6.8
-    },
-    {
-      "id": "ca8c",
-      "name": "cerveja",
-      "quantity": 13,
-      "value": 36.34
-    },
-    {
-      "id": "1dc1",
-      "name": "energético",
-      "quantity": 4,
-      "value": 33.56
-    },
-    {
-      "id": "7d45",
-      "name": "refrigerante",
-      "quantity": 9,
-      "value": 16.22
-    },
-    {
-      "id": "9a8b",
-      "name": "detergente",
-      "quantity": 1,
-      "value": 2.58
-    },
-    {
-      "id": "f409",
-      "name": "pano de pia",
-      "quantity": 50,
-      "value": 11.48
-    },
-    {
-      "id": "fa7a",
-      "name": "sabonete",
-      "quantity": 4,
-      "value": 9.92
-    },
-    {
-      "id": "ce23",
-      "name": "absorvente",
-      "quantity": 1,
-      "value": 14.98
-    },
-    {
-      "id": "d54f",
-      "name": "condicionador",
-      "quantity": 1,
-      "value": 19.68
-    },
-    {
-      "id": "68a4",
-      "name": "cotonete",
-      "quantity": 1,
-      "value": 3.98
-    },
-    {
-      "id": "d9e6",
-      "name": "pasta de dente",
-      "quantity": 4,
-      "value": 8.36
-    },
-    {
-      "id": "d85e",
-      "name": "pilhas",
-      "quantity": 4,
-      "value": 17.78
-    },
-    {
-      "id": "8074",
-      "name": "toalha de papel",
-      "quantity": 1,
-      "value": 2.98
+      "id": "Maio",
+      "produtos": [
+        {
+          "name": "arroz",
+          "quantity": 3000,
+          "value": 14.64
+        },
+        {
+          "name": "atum",
+          "quantity": 8,
+          "value": 52.64
+        },
+        {
+          "name": "azeitona",
+          "quantity": 70,
+          "value": 2.98
+        },
+        {
+          "name": "batata palha",
+          "quantity": 260,
+          "value": 13.9
+        },
+        {
+          "name": "bolachas",
+          "quantity": 3,
+          "value": 9.94
+        },
+        {
+          "name": "café",
+          "quantity": 170,
+          "value": 28.96
+        },
+        {
+          "name": "cereal",
+          "quantity": 1000,
+          "value": 19.9
+        },
+        {
+          "name": "chá",
+          "quantity": 3,
+          "value": 10.04
+        },
+        {
+          "name": "creme de leite",
+          "quantity": 3,
+          "value": 5.1
+        },
+        {
+          "name": "doce de leite",
+          "quantity": 400,
+          "value": 12.28
+        },
+        {
+          "name": "farinha biju",
+          "quantity": 1,
+          "value": 3.38
+        },
+        {
+          "name": "feijão",
+          "quantity": 3000,
+          "value": 20.14
+        },
+        {
+          "name": "ketchup",
+          "quantity": 1030,
+          "value": 16.98
+        },
+        {
+          "name": "lasanha",
+          "quantity": 3,
+          "value": 35.94
+        },
+        {
+          "name": "leite",
+          "quantity": 6,
+          "value": 26.28
+        },
+        {
+          "name": "leite condensado",
+          "quantity": 1,
+          "value": 9.68
+        },
+        {
+          "name": "macarrão",
+          "quantity": 6,
+          "value": 19.68
+        },
+        {
+          "name": "maionese",
+          "quantity": 500,
+          "value": 14.9
+        },
+        {
+          "name": "margarina",
+          "quantity": 500,
+          "value": 7.88
+        },
+        {
+          "name": "milho/ervilha/conserva",
+          "quantity": 2,
+          "value": 7.63
+        },
+        {
+          "name": "miojo",
+          "quantity": 6,
+          "value": 14.1
+        },
+        {
+          "name": "molho de tomate",
+          "quantity": 3000,
+          "value": 13.8
+        },
+        {
+          "name": "óleo",
+          "quantity": 2,
+          "value": 25.56
+        },
+        {
+          "name": "ovos",
+          "quantity": 90,
+          "value": 53.94
+        },
+        {
+          "name": "pão doce",
+          "quantity": 1,
+          "value": 7.67
+        },
+        {
+          "name": "pão de forma",
+          "quantity": 4,
+          "value": 19.92
+        },
+        {
+          "name": "pão de hamburguer",
+          "quantity": 6,
+          "value": 9.98
+        },
+        {
+          "name": "queijo fatiado",
+          "quantity": 1400,
+          "value": 48.88
+        },
+        {
+          "name": "queijo ralado",
+          "quantity": 300,
+          "value": 35.88
+        },
+        {
+          "name": "requeijão",
+          "quantity": 500,
+          "value": 11.58
+        },
+        {
+          "name": "salgadinho",
+          "quantity": 2,
+          "value": 5.93
+        },
+        {
+          "name": "salsicha",
+          "quantity": 1,
+          "value": 11.98
+        },
+        {
+          "name": "sopa",
+          "quantity": 4,
+          "value": 31.12
+        },
+        {
+          "name": "torrada",
+          "quantity": 1,
+          "value": 2.95
+        },
+        {
+          "name": "bisteka",
+          "quantity": 2080,
+          "value": 30.53
+        },
+        {
+          "name": "carne moída",
+          "quantity": 1840,
+          "value": 49.66
+        },
+        {
+          "name": "coxa/sobrecoxa",
+          "quantity": 5000,
+          "value": 49.9
+        },
+        {
+          "name": "abóbora",
+          "quantity": 640,
+          "value": 1.08
+        },
+        {
+          "name": "alface",
+          "quantity": 6,
+          "value": 19.68
+        },
+        {
+          "name": "alho",
+          "quantity": 270,
+          "value": 8.09
+        },
+        {
+          "name": "banana",
+          "quantity": 1010,
+          "value": 2
+        },
+        {
+          "name": "batata",
+          "quantity": 1860,
+          "value": 9.26
+        },
+        {
+          "name": "beterraba",
+          "quantity": 2000,
+          "value": 8.98
+        },
+        {
+          "name": "cebola",
+          "quantity": 1650,
+          "value": 14.12
+        },
+        {
+          "name": "cebolinha/salsa",
+          "quantity": 2,
+          "value": 5.78
+        },
+        {
+          "name": "cenoura",
+          "quantity": 1070,
+          "value": 8.54
+        },
+        {
+          "name": "limão",
+          "quantity": 1190,
+          "value": 2.83
+        },
+        {
+          "name": "manga",
+          "quantity": 415,
+          "value": 2.07
+        },
+        {
+          "name": "pepino",
+          "quantity": 1005,
+          "value": 3.67
+        },
+        {
+          "name": "pitaya",
+          "quantity": 1510,
+          "value": 7.52
+        },
+        {
+          "name": "rúcula",
+          "quantity": 1,
+          "value": 2.98
+        },
+        {
+          "name": "açafrão",
+          "quantity": 1,
+          "value": 2.58
+        },
+        {
+          "name": "páprica doce",
+          "quantity": 1,
+          "value": 2.18
+        },
+        {
+          "name": "cerveja",
+          "quantity": 4,
+          "value": 9.92
+        },
+        {
+          "name": "energético",
+          "quantity": 4,
+          "value": 31.12
+        },
+        {
+          "name": "refrigerante",
+          "quantity": 12,
+          "value": 16.73
+        },
+        {
+          "name": "vinho",
+          "quantity": 1,
+          "value": 28.98
+        },
+        {
+          "name": "vodka",
+          "quantity": 1000,
+          "value": 40.9
+        },
+        {
+          "name": "amaciante",
+          "quantity": 900,
+          "value": 14.9
+        },
+        {
+          "name": "detergente",
+          "quantity": 2,
+          "value": 5.36
+        },
+        {
+          "name": "esponja louça",
+          "quantity": 4,
+          "value": 7.98
+        },
+        {
+          "name": "pano de pia",
+          "quantity": 3,
+          "value": 4.98
+        },
+        {
+          "name": "sabonete",
+          "quantity": 3,
+          "value": 8.94
+        },
+        {
+          "name": "inseticida pastilhas",
+          "quantity": 3,
+          "value": 11.45
+        }
+      ]
     }
   ],
-  "maio-2024": [
-    {
-      "id": "a7b4",
-      "name": "arroz",
-      "quantity": 3000,
-      "value": 14.64
-    },
-    {
-      "id": "8f03",
-      "name": "atum",
-      "quantity": 8,
-      "value": 52.64
-    },
-    {
-      "id": "7da1",
-      "name": "azeitona",
-      "quantity": 70,
-      "value": 2.98
-    },
-    {
-      "id": "82cd",
-      "name": "batata palha",
-      "quantity": 260,
-      "value": 13.9
-    },
-    {
-      "id": "4f03",
-      "name": "bolachas",
-      "quantity": 3,
-      "value": 9.94
-    },
-    {
-      "id": "2e68",
-      "name": "café",
-      "quantity": 170,
-      "value": 28.96
-    },
-    {
-      "id": "2728",
-      "name": "cereal",
-      "quantity": 1000,
-      "value": 19.9
-    },
-    {
-      "id": "1dac",
-      "name": "chá",
-      "quantity": 3,
-      "value": 10.04
-    },
-    {
-      "id": "14f4",
-      "name": "creme de leite",
-      "quantity": 3,
-      "value": 5.1
-    },
-    {
-      "id": "7413",
-      "name": "doce de leite",
-      "quantity": 400,
-      "value": 12.28
-    },
-    {
-      "id": "2d67",
-      "name": "farinha biju",
-      "quantity": 1,
-      "value": 3.38
-    },
-    {
-      "id": "771a",
-      "name": "feijão",
-      "quantity": 3000,
-      "value": 20.14
-    },
-    {
-      "id": "3e82",
-      "name": "ketchup",
-      "quantity": 1030,
-      "value": 16.98
-    },
-    {
-      "id": "1100",
-      "name": "lasanha",
-      "quantity": 3,
-      "value": 35.94
-    },
-    {
-      "id": "a505",
-      "name": "leite",
-      "quantity": 6,
-      "value": 26.28
-    },
-    {
-      "id": "8ee2",
-      "name": "leite condensado",
-      "quantity": 1,
-      "value": 9.68
-    },
-    {
-      "id": "6c4c",
-      "name": "macarrão",
-      "quantity": 6,
-      "value": 19.68
-    },
-    {
-      "id": "5ba1",
-      "name": "maionese",
-      "quantity": 500,
-      "value": 14.9
-    },
-    {
-      "id": "3ca2",
-      "name": "margarina",
-      "quantity": 500,
-      "value": 7.88
-    },
-    {
-      "id": "eb30",
-      "name": "milho/ervilha/conserva",
-      "quantity": 2,
-      "value": 7.63
-    },
-    {
-      "id": "28c9",
-      "name": "miojo",
-      "quantity": 6,
-      "value": 14.1
-    },
-    {
-      "id": "97a3",
-      "name": "molho de tomate",
-      "quantity": 3000,
-      "value": 13.8
-    },
-    {
-      "id": "21d8",
-      "name": "óleo",
-      "quantity": 2,
-      "value": 25.56
-    },
-    {
-      "id": "a0bb",
-      "name": "ovos",
-      "quantity": 90,
-      "value": 53.94
-    },
-    {
-      "id": "4309",
-      "name": "pão doce",
-      "quantity": 1,
-      "value": 7.67
-    },
-    {
-      "id": "f078",
-      "name": "pão de forma",
-      "quantity": 4,
-      "value": 19.92
-    },
-    {
-      "id": "07d2",
-      "name": "pão de hamburguer",
-      "quantity": 6,
-      "value": 9.98
-    },
-    {
-      "id": "7420",
-      "name": "queijo fatiado",
-      "quantity": 1400,
-      "value": 48.88
-    },
-    {
-      "id": "0f74",
-      "name": "queijo ralado",
-      "quantity": 300,
-      "value": 35.88
-    },
-    {
-      "id": "34db",
-      "name": "requeijão",
-      "quantity": 500,
-      "value": 11.58
-    },
-    {
-      "id": "5887",
-      "name": "salgadinho",
-      "quantity": 2,
-      "value": 5.93
-    },
-    {
-      "id": "0db5",
-      "name": "salsicha",
-      "quantity": 1,
-      "value": 11.98
-    },
-    {
-      "id": "19d5",
-      "name": "sopa",
-      "quantity": 4,
-      "value": 31.12
-    },
-    {
-      "id": "d338",
-      "name": "torrada",
-      "quantity": 1,
-      "value": 2.95
-    },
-    {
-      "id": "3ee2",
-      "name": "bisteka",
-      "quantity": 2080,
-      "value": 30.53
-    },
-    {
-      "id": "f8f3",
-      "name": "carne moída",
-      "quantity": 1840,
-      "value": 49.66
-    },
-    {
-      "id": "7727",
-      "name": "coxa/sobrecoxa",
-      "quantity": 5000,
-      "value": 49.9
-    },
-    {
-      "id": "8822",
-      "name": "abóbora",
-      "quantity": 640,
-      "value": 1.08
-    },
-    {
-      "id": "f76a",
-      "name": "alface",
-      "quantity": 6,
-      "value": 19.68
-    },
-    {
-      "id": "daed",
-      "name": "alho",
-      "quantity": 270,
-      "value": 8.09
-    },
-    {
-      "id": "ece4",
-      "name": "banana",
-      "quantity": 1010,
-      "value": 2
-    },
-    {
-      "id": "e225",
-      "name": "batata",
-      "quantity": 1860,
-      "value": 9.26
-    },
-    {
-      "id": "873a",
-      "name": "beterraba",
-      "quantity": 2000,
-      "value": 8.98
-    },
-    {
-      "id": "1c90",
-      "name": "cebola",
-      "quantity": 1650,
-      "value": 14.12
-    },
-    {
-      "id": "111c",
-      "name": "cebolinha/salsa",
-      "quantity": 2,
-      "value": 5.78
-    },
-    {
-      "id": "9cf5",
-      "name": "cenoura",
-      "quantity": 1070,
-      "value": 8.54
-    },
-    {
-      "id": "0fb0",
-      "name": "limão",
-      "quantity": 1190,
-      "value": 2.83
-    },
-    {
-      "id": "706c",
-      "name": "manga",
-      "quantity": 415,
-      "value": 2.07
-    },
-    {
-      "id": "1b3b",
-      "name": "pepino",
-      "quantity": 1005,
-      "value": 3.67
-    },
-    {
-      "id": "dc93",
-      "name": "pitaya",
-      "quantity": 1510,
-      "value": 7.52
-    },
-    {
-      "id": "68ea",
-      "name": "rúcula",
-      "quantity": 1,
-      "value": 2.98
-    },
-    {
-      "id": "c586",
-      "name": "açafrão",
-      "quantity": 1,
-      "value": 2.58
-    },
-    {
-      "id": "2a5e",
-      "name": "páprica doce",
-      "quantity": 1,
-      "value": 2.18
-    },
-    {
-      "id": "76b8",
-      "name": "cerveja",
-      "quantity": 4,
-      "value": 9.92
-    },
-    {
-      "id": "2f8f",
-      "name": "energético",
-      "quantity": 4,
-      "value": 31.12
-    },
-    {
-      "id": "baef",
-      "name": "refrigerante",
-      "quantity": 12,
-      "value": 16.73
-    },
-    {
-      "id": "cacc",
-      "name": "vinho",
-      "quantity": 1,
-      "value": 28.98
-    },
-    {
-      "id": "afbb",
-      "name": "vodka",
-      "quantity": 1000,
-      "value": 40.9
-    },
-    {
-      "id": "e70a",
-      "name": "amaciante",
-      "quantity": 900,
-      "value": 14.9
-    },
-    {
-      "id": "86ac",
-      "name": "detergente",
-      "quantity": 2,
-      "value": 5.36
-    },
-    {
-      "id": "1d94",
-      "name": "esponja louça",
-      "quantity": 4,
-      "value": 7.98
-    },
-    {
-      "id": "b279",
-      "name": "pano de pia",
-      "quantity": 3,
-      "value": 4.98
-    },
-    {
-      "id": "c5b1",
-      "name": "sabonete",
-      "quantity": 3,
-      "value": 8.94
-    },
-    {
-      "id": "6767",
-      "name": "inseticida pastilhas",
-      "quantity": 3,
-      "value": 11.45
-    }
-  ],
-  "junho-2024": [],
-  "julho-2024": [],
-  "agosto-2024": [],
-  "setembro-2024": [],
-  "outubro-2024": [],
-  "novembro-2024": [],
-  "dezembro-2024": [],
+  "mercado-2025": [],
+  "mercado-2026": [],
+  "mercado-2027": [],
+  "janeiro-2028": [],
+  "mercado-2029": [],
+  "mercado-2030": [],
   "gastos-2024": [
     {
       "id": "Janeiro",

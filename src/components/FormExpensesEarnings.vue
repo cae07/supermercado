@@ -148,7 +148,7 @@ export default {
         },
         triggerAlerts(missingInput, isExpense) {
             let isValid = true;
-            const validNumberRegex = /^[\d.,]+$/
+            const validNumberRegex = /^[\d.,]+$/;
             const isExpensesNumberValid = validNumberRegex.test(this.expenseValue);
             const isEarningsNumberValid = validNumberRegex.test(this.earningValue);
 
