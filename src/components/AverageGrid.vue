@@ -1,5 +1,6 @@
 <template>
   <div class="container mt-5">
+    <span>{{ message }}</span>
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead class="table-light">
@@ -28,7 +29,8 @@
 export default {
   name: 'AverageGrid',
   props: {
-    productsList: Array
+    productsList: Array,
+    message: String
   }
 }
 
@@ -53,5 +55,10 @@ export default {
 
 .end-coluns {
   text-align: center;
+}
+
+span {
+  color: #007bff;
+  font-weight: 600;
 }
 </style>
