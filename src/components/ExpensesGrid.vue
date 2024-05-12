@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="expenses" class="container mt-5">
-      <h2>Gastos</h2>
+      <h2>Gastos = R${{ this.allItensSum }}</h2>
       <ExpensesAndEarningsTable :tableInfo="expenses.casa" tableName="Casa" />
       <ExpensesAndEarningsTable :tableInfo="expenses.alimentacao" tableName="Alimentação" />
       <ExpensesAndEarningsTable :tableInfo="expenses.carro" tableName="Carro" />
@@ -26,7 +26,8 @@ export default {
     },
     props: {
       expenses: Object,
-      earnings: Object
+      earnings: Object,
+      allItensSum: Number
     }
 }
 </script>
@@ -41,6 +42,11 @@ h1 {
   margin-top: 15vh;
   margin-left: 14vw;
   text-shadow: 3px 3px 7px #808080;
+  color: #FF4500;
+}
+
+h2 {
+  text-shadow: 1px 1px 4px #808080;
   color: #FF4500;
 }
 </style>

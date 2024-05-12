@@ -60,7 +60,7 @@ export default {
     display: flex;
     justify-content: space-around;
     width: 60vw;
-    margin: 50px 0 50px 12vw;
+    margin: 50px 0 0 12vw;
 }
 
 .form-control {

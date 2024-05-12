@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
     <InputsMonthYear @monthAndYear="getMonthAndYear" />
-    <ExpensesGrid :expenses="totalExpenses" :earnings="totalEarnings" />
+    <ExpensesGrid :expenses="totalExpenses" :earnings="totalEarnings" :allItensSum="allItensSum" />
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
             yearsInput: '',
             monthInput: '',
             totalExpenses: null,
-            totalEarnings: null
+            totalEarnings: null,
+            allItensSum: 0
 
         }
     },
@@ -40,10 +41,26 @@ export default {
             monthExpenses.gastos.alimentacao.supermercado = parseFloat(monthProducts?.produtos.reduce((prev, curr) => prev + curr.value, 0).toFixed(2)) || 0;
           }
 
+          this.handleSumOfAllExpenses(monthExpenses);
+          
           this.totalExpenses = monthExpenses?.gastos;
           this.totalEarnings = monthExpenses?.ganhos;
 
         }
+      },
+      handleSumOfAllExpenses({ gastos }) {
+        let totalSum = 0;
+        if (gastos) {
+          for(let itens of Object.values(gastos)){
+            if (itens) {
+              for (let item of Object.values(itens)) {
+                totalSum += item;
+              }
+
+            }
+          }
+        }
+        this.allItensSum = totalSum.toFixed(2);
       },
       async getMonthAndYear({ year, month}) {
         this.yearsInput = year;

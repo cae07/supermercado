@@ -223,6 +223,7 @@ export default {
 .container {
   max-width: 500px;
   margin: auto;
+  margin-top: 50px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;

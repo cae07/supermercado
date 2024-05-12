@@ -38,7 +38,7 @@ export default {
       if (this.tableInfo) {
         const getValues = Object.values(this.tableInfo);
         
-        this.itensSum = getValues.reduce((prev, curr) => prev + curr, 0);
+        this.itensSum = getValues.reduce((prev, curr) => prev + curr, 0).toFixed(2);
         return true
       }
       return false;
