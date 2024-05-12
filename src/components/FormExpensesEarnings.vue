@@ -43,6 +43,7 @@
 
 <script>
 import expensesType from '@/arrays.helpers/expensesType';
+import months from '@/arrays.helpers/month';
 import helpers from '@/Helpers/fetchHelpers';
 
 const {
@@ -65,7 +66,8 @@ export default {
             expenseInstallments: 0,
             inputExpenseFamily: '',
             earningDescription: '',
-            earningValue: ''
+            earningValue: '',
+            currentYear: 0,
         }
     },
     methods: {
@@ -73,13 +75,20 @@ export default {
             event.preventDefault();
             if (!this.validateExpensesInputs()) return;
             const { year, month } = this.handleDate;
+            this.currentYear = year;
+            const installments = this.expenseInstallments;
+            const description = installments? `${this.expenseDescription} (1/${installments})` : this.expenseDescription;
 
-            const key = this.inputExpenseFamily;
-            const description = this.expenseDescription;
-            const value = parseFloat(this.expenseValue.replace(',', '.'));
+            await this.postNewExpense(year, month, description);
+            await this.handleInstallments(installments);
 
+            this.clearAllInputs();
+        },
+        async postNewExpense (year, month, description) {
             const getExpenses = await getExpensesByYear(year);
             const getMonthExpenses = getExpenses.find(item => item.id === month);
+            const value = parseFloat(this.expenseValue.replace(',', '.'));
+            const key = this.inputExpenseFamily;
 
             if (getMonthExpenses) {
                 const updatedExpenses = {
@@ -102,15 +111,45 @@ export default {
 
                 await updateNewMonthExpense(year, JSON.stringify(expense));
             }
+        },
+        async handleInstallments(installments) {
+            let currentMonthIndex = this.startMonthIndex();
 
-            this.clearAllInputs();
+            if (installments) {
+                for (let installmentIndex = 1; installmentIndex < installments; installmentIndex += 1) {
+                    if (currentMonthIndex === 12) {
+                        currentMonthIndex = 0;
+                        this.currentYear += 1;
+                    }
+
+                    const description = `${this.expenseDescription} (${installmentIndex + 1}/${installments})`;
+                    const actualMonth = months[currentMonthIndex];
+                    
+                    await this.postNewExpense(this.currentYear, actualMonth, description);
+
+                    currentMonthIndex += 1;
+                }
+            }
+        },
+        startMonthIndex() {
+            const startingMonthIndex = months.indexOf(this.handleDate.month) + 1;
+            let currentMonthIndex;
+
+            if (startingMonthIndex === 12) {
+                currentMonthIndex = 0;
+                this.currentYear += 1;
+            } else {
+                currentMonthIndex = startingMonthIndex;
+            }
+
+            return currentMonthIndex;
         },
         async handleEarnings(event) {
             event.preventDefault();
             if (!this.validateEarningsInputs()) return;
             const { year, month } = this.handleDate;
 
-            const description = this.earningDescription;
+            const description = this.earningDescription.toLowerCase();
             const value = parseFloat(this.earningValue.replace(',','.'));
 
             const getExpenses = await getExpensesByYear(year);
@@ -119,7 +158,7 @@ export default {
             if (getMonthExpenses) {
                 const updatedExpenses = {
                     ...getMonthExpenses.ganhos,
-                    [description]: (getMonthExpenses.ganhos[description] || 0) + value
+                    [description]: (getMonthExpenses.ganhos?.[description] || 0) + value
 
                 };
 
