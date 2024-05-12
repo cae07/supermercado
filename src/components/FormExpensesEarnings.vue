@@ -88,7 +88,7 @@ export default {
             const getExpenses = await getExpensesByYear(year);
             const getMonthExpenses = getExpenses.find(item => item.id === month);
             const value = parseFloat(this.expenseValue.replace(',', '.'));
-            const key = this.inputExpenseFamily;
+            const key = this.inputExpenseFamily.replace('ç', 'c').replace('é', 'e').replace('ã', 'a').replace('á', 'a').toLowerCase();
 
             if (getMonthExpenses) {
                 const updatedExpenses = {

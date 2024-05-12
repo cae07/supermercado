@@ -1,35 +1,48 @@
 <template>
   <div id="main-container">
     <InputsMonthYear @monthAndYear="getMonthAndYear" />
-    <h1>R$ {{ totalExpenses }}</h1>
+    <ExpensesGrid :expenses="totalExpenses" :earnings="totalEarnings" />
   </div>
 </template>
 
 <script>
+import ExpensesGrid from '@/components/ExpensesGrid.vue';
 import InputsMonthYear from '../components/InputsMonthYear.vue';
 import helpers from '../Helpers/fetchHelpers';
 
-const { getAllProductsByDate } = helpers;
+const { getAllMarketProductsByYear, getExpensesByYear } = helpers;
 
 export default {
     name: 'Gastos',
     components: {
-      InputsMonthYear
+      InputsMonthYear,
+      ExpensesGrid
     },
     data() {
         return {
             yearsInput: '',
             monthInput: '',
-            totalExpenses: 0
+            totalExpenses: null,
+            totalEarnings: null
+
         }
     },
     methods: {
       async calculateExpenses() {
         if (this.yearsInput && this.monthInput) {
-          const dataToFetch = `${this.monthInput.toLowerCase()}-${this.yearsInput}`;
-          const allProducts = await getAllProductsByDate(dataToFetch);
+          const allProducts = await getAllMarketProductsByYear(this.yearsInput);
+          const allExpenses = await getExpensesByYear(this.yearsInput);
 
-          this.totalExpenses = allProducts.reduce((prev, curr) => prev + curr.value, 0).toFixed(2);
+          const monthProducts = allProducts.find(list => list.id === this.monthInput);
+          const monthExpenses = allExpenses.find(list => list.id === this.monthInput);
+
+          if (monthExpenses && monthProducts) {
+            monthExpenses.gastos.alimentacao.supermercado = parseFloat(monthProducts?.produtos.reduce((prev, curr) => prev + curr.value, 0).toFixed(2)) || 0;
+          }
+
+          this.totalExpenses = monthExpenses?.gastos;
+          this.totalEarnings = monthExpenses?.ganhos;
+
         }
       },
       async getMonthAndYear({ year, month}) {
@@ -47,13 +60,4 @@ export default {
   flex-direction: column;
 }
 
-h1 {
-  margin-top: 15vh;
-  margin-left: 55vh;
-  width: 50vw;
-  height: 50vh;
-  font-size: 5em;
-  text-shadow: 3px 3px 7px #808080;
-  color: #FF4500;
-}
 </style>

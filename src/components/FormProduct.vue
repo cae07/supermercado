@@ -123,7 +123,7 @@
           if (event.key === 'Enter' || missingInput) {
             global.alert("Por favor preencha todos os campos.");
             return null;
-          } else if (validNumberRegex.test(this.value)) {
+          } else if (!validNumberRegex.test(this.value)) {
             global.alert("Por favor digite um número válido.");
             return null;
           } else {
