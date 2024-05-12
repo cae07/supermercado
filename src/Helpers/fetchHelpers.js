@@ -1,16 +1,5 @@
 const url = 'http://localhost:3000';
 
-const getAllProductsByDate = async (date) =>
-  await fetch(`${url}/${date}`)
-  .then(response => {
-    if (!response.ok) {
-        return [];
-    }
-    return response.json()
-  })
-  .catch(error => console.error('Erro:', error));
-
-
 const getAllProductsList = async () =>
   await fetch(`${url}/produtos`)
   .then(response => {
@@ -106,7 +95,6 @@ const updateNewMonthExpense = async (year, expense) =>
 
 export default {
     getAllProductsList,
-    getAllProductsByDate,
     getExpensesByYear,
     updateExpenseWithId,
     updateNewMonthExpense,
