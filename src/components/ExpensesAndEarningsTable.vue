@@ -12,9 +12,9 @@
           <td>{{ item[0] }}</td>
           <td class="end-coluns">{{ item[1].toFixed(2) }}</td>
         </tr>
-        <tr>
+        <tr v-if="sumAllItens">
           <td class="totalSum">Total</td>
-          <td class="end-coluns totalSum" v-if="sumAllItens">{{ itensSum }}</td>
+          <td class="end-coluns totalSum">{{ itensSum }}</td>
         </tr>
       </tbody>
     </table>

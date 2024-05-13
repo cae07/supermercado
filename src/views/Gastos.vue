@@ -48,9 +48,11 @@ export default {
 
         }
       },
-      handleSumOfAllExpenses({ gastos }) {
+      handleSumOfAllExpenses(monthExpenses) {
         let totalSum = 0;
-        if (gastos) {
+        if (monthExpenses?.gastos) {
+          const { gastos } = monthExpenses;
+
           for(let itens of Object.values(gastos)){
             if (itens) {
               for (let item of Object.values(itens)) {

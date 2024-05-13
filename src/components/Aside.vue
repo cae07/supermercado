@@ -5,6 +5,7 @@
       <router-link @click="handleClick('marketList')" class="router-btn" :class="{ 'clicked': marketList }" to="/lista">Lista Mercado</router-link>
       <router-link @click="handleClick('launchExpenses')" class="router-btn" :class="{ 'clicked': launchExpenses }" to="/inserir_gastos">Lançar Gastos</router-link>
       <router-link @click="handleClick('expenses')" class="router-btn" :class="{ 'clicked': expenses }" to="/gastos">Gastos</router-link>
+      <router-link @click="handleClick('earnings')" class="router-btn" :class="{ 'clicked': earnings }" to="/ganhos">Ganhos</router-link>
     </nav>
 </template>
 
@@ -18,6 +19,7 @@ export default {
             marketList: false,
             launchExpenses: false,
             expenses: false,
+            earnings: false
         }
     },
     methods: {
@@ -27,12 +29,14 @@ export default {
             this.marketList = false;
             this.launchExpenses = false;
             this.expenses = false;
+            this.earnings = false;
             this[button] = true;
         }
     },
     mounted() {
         setTimeout(() => {
             const url = this.$route.fullPath;
+            console.log('url =', url);
             switch (url) {
                 case '/':
                     this.initialPage = true;
@@ -48,6 +52,9 @@ export default {
                     break;
                 case '/gastos':
                     this.expenses = true;
+                    break;
+                case '/ganhos':
+                    this.earnings = true;
                     break;
                 default:
                     break;

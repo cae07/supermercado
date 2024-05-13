@@ -12,7 +12,7 @@
       <ExpensesAndEarningsTable :tableInfo="expenses.trybe" tableName="Trybe" />
       <ExpensesAndEarningsTable :tableInfo="expenses.outros" tableName="Outros" />
     </div>
-    <h1 v-else>Não foram encontrados recursos para esse filtro</h1>
+    <h1 v-else>Não foram encontrados dados para o filtro escolhido.</h1>
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
 
 h1 {
   margin-top: 15vh;
-  margin-left: 14vw;
+  margin-left: 12vw;
   text-shadow: 3px 3px 7px #808080;
   color: #FF4500;
 }
