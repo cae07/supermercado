@@ -67,7 +67,8 @@
       getAllMarketProductsByYear,
       postNewMonthProduct,
       deleteMarketMonth,
-      updateProductsWithId
+      updateProductsWithId,
+      postNewProductInProductLis
     } = helpers;
     const today = new Date(Date.now());
     
@@ -90,7 +91,8 @@
           disabledProdFamily: true,
           disabled: true,
           allProducts: [],
-          existentProdutsList: []
+          existentProdutsList: [],
+          existItem: true
         }
       },
       methods: {
@@ -106,10 +108,12 @@
               this.disabledeasure = true;
               this.disabledProdFamily = true;
               this.disabled = false;
+              this.existItem = true;
             } else {
               this.disabledeasure = false;
               this.disabledProdFamily = false;
               this.disabled = false;
+              this.existItem = false;
             }
           }
     
@@ -142,11 +146,27 @@
             } else {
                 await this.createNewMonth();
             }
+
+            await this.handleExistProductInGeneralList();
+        },
+
+        async handleExistProductInGeneralList() {
+          if (!this.existItem) {
+            const newProduct = {
+              name: this.productName,
+              measure: this.inputMeasure,
+              productType: this.inputProdFamily
+            };
+
+            await postNewProductInProductLis(JSON.stringify(newProduct));
+          }
         },
 
         async updateExistingMonth(monthProducts) {
             const { produtos } = monthProducts;
             const productIndex = produtos.findIndex(item => item.name === this.productName);
+
+            console.log('productIndex =', productIndex);
 
             if (productIndex !== -1) {
                 await this.updateExistingProduct(monthProducts, productIndex);

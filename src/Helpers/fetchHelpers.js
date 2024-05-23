@@ -10,6 +10,18 @@ const getAllProductsList = async () =>
   })
   .catch(error => console.error('Erro:', error));
 
+const postNewProductInProductLis = async (newProduct) =>
+  fetch(`${url}/produtos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: newProduct
+  }).then(response => {
+    if (!response.ok) {
+        return [];
+    }
+  })
+  .catch(error => console.error('Erro:', error));
+
 
 const getExpensesByYear = async (year) =>
   await fetch(`${url}/gastos-${year}`)
@@ -95,6 +107,7 @@ const updateNewMonthExpense = async (year, expense) =>
 
 export default {
     getAllProductsList,
+    postNewProductInProductLis,
     getExpensesByYear,
     updateExpenseWithId,
     updateNewMonthExpense,
