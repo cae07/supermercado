@@ -38,7 +38,18 @@ export default {
           const monthExpenses = allExpenses.find(list => list.id === this.monthInput);
 
           if (monthExpenses && monthProducts) {
-            monthExpenses.gastos.alimentacao.supermercado = parseFloat(monthProducts?.produtos.reduce((prev, curr) => prev + curr.value, 0).toFixed(2)) || 0;
+            const total = parseFloat(monthProducts?.produtos.reduce((prev, curr) => prev + curr.value, 0).toFixed(2)) || 0;
+            if (!monthExpenses.gastos.alimentacao) {
+              monthExpenses.gastos = {
+                    ...monthExpenses.gastos,
+                    alimentacao: {
+                      supermercado: total
+                    }
+                };
+            } else {
+              monthExpenses.gastos.alimentacao.supermercado = total;
+
+            }
           }
 
           this.handleSumOfAllExpenses(monthExpenses);

@@ -6,6 +6,7 @@
       <router-link @click="handleClick('launchExpenses')" class="router-btn" :class="{ 'clicked': launchExpenses }" to="/inserir_gastos">Lançar Gastos</router-link>
       <router-link @click="handleClick('expenses')" class="router-btn" :class="{ 'clicked': expenses }" to="/gastos">Gastos</router-link>
       <router-link @click="handleClick('earnings')" class="router-btn" :class="{ 'clicked': earnings }" to="/ganhos">Ganhos</router-link>
+      <router-link @click="handleClick('charts')" class="router-btn" :class="{ 'clicked': charts }" to="/graficos">Gráficos</router-link>
     </nav>
 </template>
 
