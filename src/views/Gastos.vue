@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
     <InputsMonthYear @monthAndYear="getMonthAndYear" />
-    <ExpensesGrid :expenses="totalExpenses" :earnings="totalEarnings" :allItensSum="allItensSum" />
+    <ExpensesGrid :expenses="totalExpenses" :allItensSum="allItensSum" />
   </div>
 </template>
 

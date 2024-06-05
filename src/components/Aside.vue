@@ -20,7 +20,8 @@ export default {
             marketList: false,
             launchExpenses: false,
             expenses: false,
-            earnings: false
+            earnings: false,
+            charts: false
         }
     },
     methods: {
@@ -31,6 +32,7 @@ export default {
             this.launchExpenses = false;
             this.expenses = false;
             this.earnings = false;
+            this.charts = false;
             this[button] = true;
         }
     },
@@ -56,6 +58,9 @@ export default {
                     break;
                 case '/ganhos':
                     this.earnings = true;
+                    break;
+                case '/graficos':
+                    this.charts = true;
                     break;
                 default:
                     break;

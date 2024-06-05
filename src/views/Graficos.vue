@@ -1,43 +1,44 @@
 <template>
-  <Bar id="chart" :data="data" :options="options" />
+  <div class="main-container">
+    <BarChart />
+    <InputsMonthYear @monthAndYear="getMonthAndYear" />
+    <PieChart />
+  </div>
 </template>
 
 <script>
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-} from 'chart.js'
-import { Bar } from 'vue-chartjs'
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+import PieChart from '@/components/PieChart.vue';
+import BarChart from '@/components/BarChart.vue';
+import InputsMonthYear from '@/components/InputsMonthYear.vue';
 
 export default {
-  name: 'App',
+  name: 'Graficos',
   components: {
-    Bar
+    PieChart,
+    BarChart,
+    InputsMonthYear
   },
   data() {
     return {
-      data: {
-        labels: ['January', 'February', 'March'],
-        datasets: [{ data: [40, 20, 12] }]
-      },
-      options: {
-        responsive: true
-      }
+      yearsInput: '',
+      monthInput: ''
     }
+  },
+  methods: {
+    getMonthAndYear({ year, month}) {
+        this.yearsInput = year;
+        this.monthInput = month;
+      }
   }
 }
 </script>
 
 <style scoped>
-#chart {
-  max-width: 80%;
-  margin-left: 5%;
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-left: 3%;
+  align-items: center;
 }
 </style>

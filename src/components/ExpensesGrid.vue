@@ -26,7 +26,6 @@ export default {
     },
     props: {
       expenses: Object,
-      earnings: Object,
       allItensSum: Number
     }
 }
