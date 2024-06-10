@@ -9,8 +9,10 @@
 import ExpensesGrid from '@/components/ExpensesGrid.vue';
 import InputsMonthYear from '../components/InputsMonthYear.vue';
 import helpers from '../Helpers/fetchHelpers';
+import handles from '../Helpers/handles.helper';
 
 const { getAllMarketProductsByYear, getExpensesByYear } = helpers;
+const { handleSumOfAllExpenses, handleSupermarketExpenses } = handles;
 
 export default {
     name: 'Gastos',
@@ -33,47 +35,17 @@ export default {
         if (this.yearsInput && this.monthInput) {
           const allProducts = await getAllMarketProductsByYear(this.yearsInput);
           const allExpenses = await getExpensesByYear(this.yearsInput);
+          const monthExpenses = handleSupermarketExpenses(allExpenses, allProducts, this.monthInput);
 
-          const monthProducts = allProducts.find(list => list.id === this.monthInput);
-          const monthExpenses = allExpenses.find(list => list.id === this.monthInput);
-
-          if (monthExpenses && monthProducts) {
-            const total = parseFloat(monthProducts?.produtos.reduce((prev, curr) => prev + curr.value, 0).toFixed(2)) || 0;
-            if (!monthExpenses.gastos.alimentacao) {
-              monthExpenses.gastos = {
-                    ...monthExpenses.gastos,
-                    alimentacao: {
-                      supermercado: total
-                    }
-                };
-            } else {
-              monthExpenses.gastos.alimentacao.supermercado = total;
-
-            }
-          }
-
-          this.handleSumOfAllExpenses(monthExpenses);
+          this.sumOfAllExpenses(monthExpenses);
           
           this.totalExpenses = monthExpenses?.gastos;
           this.totalEarnings = monthExpenses?.ganhos;
 
         }
       },
-      handleSumOfAllExpenses(monthExpenses) {
-        let totalSum = 0;
-        if (monthExpenses?.gastos) {
-          const { gastos } = monthExpenses;
-
-          for(let itens of Object.values(gastos)){
-            if (itens) {
-              for (let item of Object.values(itens)) {
-                totalSum += item;
-              }
-
-            }
-          }
-        }
-        this.allItensSum = totalSum.toFixed(2);
+      sumOfAllExpenses(monthExpenses) {
+        this.allItensSum = handleSumOfAllExpenses(monthExpenses);
       },
       async getMonthAndYear({ year, month}) {
         this.yearsInput = year;

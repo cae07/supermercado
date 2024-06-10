@@ -166,8 +166,6 @@
             const { produtos } = monthProducts;
             const productIndex = produtos.findIndex(item => item.name === this.productName);
 
-            console.log('productIndex =', productIndex);
-
             if (productIndex !== -1) {
                 await this.updateExistingProduct(monthProducts, productIndex);
             } else {

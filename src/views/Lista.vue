@@ -81,7 +81,6 @@ export default {
 
       const productsByPeriod = await this.getSelectedList(periods, actualYear);
 
-      console.log(productsByPeriod);
       const finalList = this.getFinalList(productsByPeriod);
 
       this.productsList = this.sortItems(finalList);
@@ -119,7 +118,7 @@ export default {
 
         return {
           ...product,
-          quantity: divisor > 0? quantity / divisor : quantity
+          quantity: divisor > 0? (quantity / divisor).toFixed(2) : quantity
         };
       });
     },

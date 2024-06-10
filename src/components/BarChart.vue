@@ -21,8 +21,10 @@ import {
 import { Bar } from 'vue-chartjs';
 import helpers from '../Helpers/fetchHelpers';
 import months from '../arrays.helpers/month'
+import handles from '../Helpers/handles.helper';
 
-const { getExpensesByYear } = helpers;
+const { getExpensesByYear, getAllMarketProductsByYear } = helpers;
+const { handleSumOfAllExpenses, handleSupermarketExpenses } = handles;
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -82,27 +84,11 @@ export default {
       this.earnings = earnings.reduce((curr, prev) => curr + Number(prev), 0);
       return earnings;
     },
-    getExpensesData(allExpenses) {
+    getExpensesData(allExpenses, allProducts) {
       const expenses = months.map(month => {
-        const findMonth = allExpenses.find(expense => expense.id === month);
-        let totalSum = 0;
+        const monthExpense = handleSupermarketExpenses(allExpenses, allProducts, month);
         
-        if (findMonth && findMonth.gastos) {
-          const { gastos } = findMonth;
-
-          for(let itens of Object.values(gastos)){
-            if (itens) {
-              for (let item of Object.values(itens)) {
-                totalSum += item;
-              }
-
-            }
-          }
-
-          totalSum = totalSum.toFixed(2);
-        }
-
-        return totalSum;
+        return handleSumOfAllExpenses(monthExpense);
       });
 
       this.expenses = expenses.reduce((curr, prev) => curr + Number(prev), 0);
@@ -114,15 +100,13 @@ export default {
     const actualYear = today.getFullYear();
     this.actualYear = actualYear;
     const allExpenses = await getExpensesByYear(actualYear);
+    const allProducts = await getAllMarketProductsByYear(actualYear);
 
-    const expensesData = this.getExpensesData(allExpenses);
+    const expensesData = this.getExpensesData(allExpenses, allProducts);
     const earningsData = this.getEarningsData(allExpenses);
     
     this.data.datasets[0].data = expensesData;
     this.data.datasets[1].data = earningsData;
-
-    console.log('expenses', expensesData);
-    console.log('ganhos', earningsData);
 
     this.isPositive = this.earnings - this.expenses >= 0;
     this.loading = false;
@@ -132,7 +116,7 @@ export default {
 <style scoped>
 .chartBar { 
   width:  70vw;
-  max-height: 85%;
+  max-height: 82%;
 }
 
 .earnings {

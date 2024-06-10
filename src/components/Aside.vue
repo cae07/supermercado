@@ -39,7 +39,6 @@ export default {
     mounted() {
         setTimeout(() => {
             const url = this.$route.fullPath;
-            console.log('url =', url);
             switch (url) {
                 case '/':
                     this.initialPage = true;
