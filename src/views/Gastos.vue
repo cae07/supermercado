@@ -1,8 +1,9 @@
 <template>
   <div id="main-container">
     <InputsMonthYear @monthAndYear="getMonthAndYear" />
+    <h2 v-if="allItensSum">Gastos = R${{ this.allItensSum }}</h2>
     <main class="result-container">
-      <ExpensesGrid id="expenses-grid" :expenses="totalExpenses" :allItensSum="allItensSum" />
+      <ExpensesGrid id="expenses-grid" :expenses="totalExpenses" />
       <PieChart id="pieChart" :monthExpenses="monthExpenses" />
     </main>
   </div>
@@ -91,6 +92,14 @@ export default {
   top: 20vh;
   right: -5vw;
   width: 50%;
+}
+
+h2 {
+  text-shadow: 1px 1px 4px #808080;
+  color: #FF4500;
+  width: 80vw;
+  margin-top: 3vh;
+  text-align: center;
 }
 
 </style>

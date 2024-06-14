@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="expenses" class="container mt-5">
-      <h2>Gastos = R${{ this.allItensSum }}</h2>
       <ExpensesAndEarningsTable :tableInfo="expenses.casa" tableName="Casa" />
       <ExpensesAndEarningsTable :tableInfo="expenses.alimentacao" tableName="Alimentação" />
       <ExpensesAndEarningsTable :tableInfo="expenses.carro" tableName="Carro" />
@@ -26,8 +25,7 @@ export default {
       ExpensesAndEarningsTable
     },
     props: {
-      expenses: Object,
-      allItensSum: Number
+      expenses: Object
     }
 }
 </script>

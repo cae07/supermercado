@@ -13,7 +13,7 @@ const handleSumOfAllExpenses = (monthExpenses) => {
     }
   }
 
-  return totalSum.toFixed(2);
+  return totalSum === 0? 0 : totalSum.toFixed(2);
 };
 
 const handleSupermarketExpenses = (allExpenses, allProducts, month) => {
