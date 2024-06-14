@@ -6,8 +6,9 @@ const expensesType = [
     'Passeios',
     'Cartão de Crédito',
     'Farmácia',
-    'Trybe', 
-    'Outros'
+    'Trybe',
+    'Outros',
+    'Obra'
 ];
 
 export default expensesType;

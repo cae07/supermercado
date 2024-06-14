@@ -11,8 +11,9 @@
       <ExpensesAndEarningsTable :tableInfo="expenses.farmacia" tableName="Farmácia" />
       <ExpensesAndEarningsTable :tableInfo="expenses.trybe" tableName="Trybe" />
       <ExpensesAndEarningsTable :tableInfo="expenses.outros" tableName="Outros" />
+      <ExpensesAndEarningsTable :tableInfo="expenses.obra" tableName="Obra" />
     </div>
-    <h1 v-else>Não foram encontrados dados para o filtro escolhido.</h1>
+    <h1 id="not-found" v-else>Não foram encontrados dados para o filtro escolhido.</h1>
   </div>
 </template>
 
@@ -34,12 +35,17 @@ export default {
 <style scoped>
 .container {
   max-width: 50vw;
-  margin-left: 16vw;
+  min-width: 38vw;
+}
+
+#not-found {
+  margin-left: 12vw;
+
 }
 
 h1 {
   margin-top: 15vh;
-  margin-left: 12vw;
+  /* margin-left: 12vw; */
   text-shadow: 3px 3px 7px #808080;
   color: #FF4500;
 }

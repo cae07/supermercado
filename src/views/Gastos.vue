@@ -1,13 +1,17 @@
 <template>
   <div id="main-container">
     <InputsMonthYear @monthAndYear="getMonthAndYear" />
-    <ExpensesGrid :expenses="totalExpenses" :allItensSum="allItensSum" />
+    <main class="result-container">
+      <ExpensesGrid id="expenses-grid" :expenses="totalExpenses" :allItensSum="allItensSum" />
+      <PieChart id="pieChart" :monthExpenses="monthExpenses" />
+    </main>
   </div>
 </template>
 
 <script>
 import ExpensesGrid from '@/components/ExpensesGrid.vue';
 import InputsMonthYear from '../components/InputsMonthYear.vue';
+import PieChart from '@/components/PieChart.vue';
 import helpers from '../Helpers/fetchHelpers';
 import handles from '../Helpers/handles.helper';
 
@@ -18,7 +22,8 @@ export default {
     name: 'Gastos',
     components: {
       InputsMonthYear,
-      ExpensesGrid
+      ExpensesGrid,
+      PieChart
     },
     data() {
         return {
@@ -26,7 +31,8 @@ export default {
             monthInput: '',
             totalExpenses: null,
             totalEarnings: null,
-            allItensSum: 0
+            allItensSum: 0,
+            monthExpenses: null
 
         }
     },
@@ -38,10 +44,21 @@ export default {
           const monthExpenses = handleSupermarketExpenses(allExpenses, allProducts, this.monthInput);
 
           this.sumOfAllExpenses(monthExpenses);
+
+          console.log( monthExpenses?.gastos);
           
           this.totalExpenses = monthExpenses?.gastos;
           this.totalEarnings = monthExpenses?.ganhos;
 
+        }
+      },
+      async getExpenses() {
+        if (this.yearsInput && this.monthInput) {
+          const allExpenses = await getExpensesByYear(this.yearsInput);
+          const allProducts = await getAllMarketProductsByYear(this.yearsInput);
+
+          const monthExpense = handleSupermarketExpenses(allExpenses, allProducts, this.monthInput);
+          this.monthExpenses = monthExpense || null;
         }
       },
       sumOfAllExpenses(monthExpenses) {
@@ -51,6 +68,7 @@ export default {
         this.yearsInput = year;
         this.monthInput = month;
         await this.calculateExpenses();
+        await this.getExpenses();
       }
     }
 }
@@ -60,6 +78,19 @@ export default {
 #main-container {
   display: flex;
   flex-direction: column;
+}
+
+.result-container {
+  display: flex;
+  max-width: 80vw;
+  margin-left: 2vw;
+}
+
+#pieChart {
+  position: absolute;
+  top: 20vh;
+  right: -5vw;
+  width: 50%;
 }
 
 </style>

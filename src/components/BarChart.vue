@@ -116,7 +116,6 @@ export default {
 <style scoped>
 .chartBar { 
   width:  70vw;
-  max-height: 82%;
 }
 
 .earnings {

@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading"></div>
     <div v-else>
       <Pie id="chart" :key="chartKey" :data="data" :options="options" />
     </div>
@@ -24,7 +24,8 @@ export default {
     monthExpenses: {
       type: Object,
       default: () => ({})
-    }
+    },
+    chartSide: String
   },
   components: {
     Pie 
@@ -37,7 +38,7 @@ export default {
         labels: [],
         datasets: [
           {
-            backgroundColor: ['#836FFF', '#00FFFF', '#008080', '#00FA9A', '#ADFF2F', '#FFFF00', '#4B0082', '#8B008B', '#FF4500'],
+            backgroundColor: ['#D3D3D3', '#0000FF', '#7FFFD4', '#ADFF2F', '#D2691E', '#FF00FF', '#DC143C', '#FFFF00', '#87CEEB', '#00008B'],
             data: []
           }
         ]
@@ -48,11 +49,16 @@ export default {
         plugins: {
           legend: {
             position: 'right',
-            align: 'start',
+            align: 'center',
             labels: {
-              boxWidth: 20,
-              padding: 20
+              boxWidth: 35,
+              padding: 10
             }
+          },
+        },
+        layout: {
+          padding: {
+            right: 90 // Ajuste este valor para mover a legenda mais para a esquerda
           }
         }
       }
@@ -100,12 +106,12 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: row; /* Layout in row */
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80%;
+  max-height: 80%;
   margin-top: 5%;
 }
 #chart {
-  width: 60vw;
-  height: 60vh
+  width: 52vw;
+  height: 52vh
 }
 </style>
