@@ -1,8 +1,8 @@
 <template>
     <nav>
       <router-link @click="handleClick('initialPage')" class="router-btn" :class="{ 'clicked': initialPage }" to="/">Página Inicial</router-link>
-      <router-link @click="handleClick('insertProducts')" class="router-btn" :class="{ 'clicked': insertProducts }" to="/inserir_produtos">Lançar Produtos</router-link>
-      <router-link @click="handleClick('marketList')" class="router-btn" :class="{ 'clicked': marketList }" to="/lista">Lista Mercado</router-link>
+      <router-link @click="handleClick('insertProducts')" class="router-btn" :class="{ 'clicked': insertProducts }" to="/inserir_produtos">Lançar Mercado</router-link>
+      <router-link @click="handleClick('marketList')" class="router-btn" :class="{ 'clicked': marketList }" to="/lista">Lista Compra</router-link>
       <router-link @click="handleClick('launchExpenses')" class="router-btn" :class="{ 'clicked': launchExpenses }" to="/inserir_gastos">Lançar Gastos</router-link>
       <router-link @click="handleClick('expenses')" class="router-btn" :class="{ 'clicked': expenses }" to="/gastos">Gastos</router-link>
       <router-link @click="handleClick('earnings')" class="router-btn" :class="{ 'clicked': earnings }" to="/ganhos">Ganhos</router-link>
