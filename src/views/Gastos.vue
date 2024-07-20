@@ -45,8 +45,6 @@ export default {
           const monthExpenses = handleSupermarketExpenses(allExpenses, allProducts, this.monthInput);
 
           this.sumOfAllExpenses(monthExpenses);
-
-          console.log( monthExpenses?.gastos);
           
           this.totalExpenses = monthExpenses?.gastos;
           this.totalEarnings = monthExpenses?.ganhos;
