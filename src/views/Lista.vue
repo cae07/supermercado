@@ -1,12 +1,13 @@
 <template>
   <div id="main-container">
     <ListButtons @averagePeriod="handleAveragePeriod" />
+    <InputsMonthYear v-if="enableMonth" @monthAndYear="getMonthAndYear" />
     <AverageGrid :productsList="productsList" :message="findedMonthsMsg" />
   </div>
 </template>
 
-
 <script>
+import InputsMonthYear from '@/components/InputsMonthYear.vue';
 import AverageGrid from '@/components/AverageGrid.vue';
 import ListButtons from '@/components/ListButtons.vue';
 import months from '../arrays.helpers/month';
@@ -22,12 +23,14 @@ export default {
   name: 'Lista',
   components: {
     AverageGrid,
-    ListButtons
+    ListButtons,
+    InputsMonthYear
   },
   data() {
     return {
       productsList: [],
-      findedMonthsMsg: ''
+      findedMonthsMsg: '',
+      enableMonth: false
     }
   },
   methods: {
@@ -42,6 +45,10 @@ export default {
         case 'winter':
           await this.handleWinterPeriod();
           break;
+        case 'month':
+          this.enableMonth = true;
+          this.findedMonthsMsg = 'Aguardando escolha da data';
+          break;
       
         default:
           break;
@@ -51,7 +58,21 @@ export default {
       const productsList = await getAllProductsList();
       this.productsList = this.sortItems(productsList);
     },
+    async getMonthAndYear({ year, month}) {
+      this.yearsInput = year;
+      this.monthInput = month;
+      await this.handleMonthPeriod();
+    },
+    async handleMonthPeriod() {
+      if(this.yearsInput && this.monthInput){
+        const productsByPeriod = await this.getSelectedList([this.monthInput], this.yearsInput);
+        const finalList = this.getFinalList(productsByPeriod);
+
+        this.productsList = this.sortItems(finalList);
+      }
+    },
     async handleYearPeriod() {
+      this.enableMonth = false;
       const datesToFetch = this.getDatesToFetch(months, today.getMonth(), today.getFullYear());
       const actualYear = today.getFullYear();
       const lastYear = actualYear - 1;
@@ -76,6 +97,7 @@ export default {
         .map(item => item.split('-')[0]);
     },
     async handleSummerPeriod() {
+      this.enableMonth = false;
       const periods = ['Dezembro', 'Janeiro', 'Fevereiro', 'Março'];
       const actualYear = today.getFullYear();
 
@@ -86,6 +108,7 @@ export default {
       this.productsList = this.sortItems(finalList);
     },
     async handleWinterPeriod() {
+      this.enableMonth = false;
       const periods = ['Maio', 'Junho', 'Julho', 'Agosto'];
       const actualYear = today.getFullYear();
 
@@ -98,9 +121,9 @@ export default {
       const getMarketList = await getAllMarketProductsByYear(year);
 
       return getMarketList.map(allMonths => {
-        const test = periods.some(period => period === allMonths.id);
+        const getPeriodList = periods.some(period => period === allMonths.id);
 
-        if (test) return allMonths.produtos;
+        if (getPeriodList) return allMonths.produtos;
         return;
       });
     },

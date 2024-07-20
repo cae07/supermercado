@@ -3,6 +3,7 @@
         <button id="btn-year" type="button" :class="{ 'btn-success': clickedYear }" class="btn btn-secondary btn-lg" @click="handleAverage('year')">Média até 12 meses</button>
         <button id="btn-summer" type="button" :class="{ 'btn-warning': clickedSummer }" class="btn btn-secondary btn-lg" @click="handleAverage('summer')">Média Verão</button>
         <button id="btn-winter" type="button" :class="{ 'btn-info': clickedWinter }" class="btn btn-secondary btn-lg" @click="handleAverage('winter')">Média Inverno</button>
+        <button id="btn-month" type="button" :class="{ 'btn-danger': clickedMonth }" class="btn btn-secondary btn-lg" @click="handleAverage('month')">Mensal</button>
     </nav>
 </template>
 
@@ -14,6 +15,7 @@ export default {
         clickedYear: false,
         clickedSummer: false,
         clickedWinter: false,
+        clickedMonth: false
       }
     },
     methods: {
@@ -27,16 +29,25 @@ export default {
             this.clickedYear = true;
             this.clickedSummer = false;
             this.clickedWinter = false;
+            this.clickedMonth = false;
             break;
           case 'summer':
             this.clickedYear = false;
             this.clickedSummer = true;
             this.clickedWinter = false;
+            this.clickedMonth = false;
             break;
           case 'winter':
             this.clickedYear = false;
             this.clickedSummer = false;
             this.clickedWinter = true;
+            this.clickedMonth = false;
+            break;
+          case 'month':
+            this.clickedYear = false;
+            this.clickedSummer = false;
+            this.clickedWinter = false;
+            this.clickedMonth = true;
             break;
         
           default:
@@ -56,7 +67,7 @@ export default {
 }
 
 .btn {
-    width: 300px;
+    width: 220px;
     box-shadow: 4px 4px 8px #808080;
     padding: 10px 20px;
     border: none;
@@ -78,7 +89,12 @@ export default {
 #btn-winter:hover {
     background-color: #007bff;
     color: #fff;
-    cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 123, 255, 0.7);
+}
+
+#btn-month:hover {
+  background-color: #e74c3c;
+  box-shadow: 0 4px 6px rgba(231, 76, 60, 0.7);
+  color: #fff;
 }
 </style>
