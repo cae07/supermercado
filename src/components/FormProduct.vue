@@ -18,8 +18,12 @@
         <label for="input-product">Produto</label>
         <input @keyup.enter="handleProduct" type="text" class="form-control" id="input-product" placeholder="Digite o produto" v-model="productName">
       </div>
-      <div class="form-group">
+      <div id="handleProductCheckbox" class="form-group">
         <button type="button" @click="handleProduct" class="btn btn-primary">Pesquisar alimento</button>
+        <label class="form-check-label" for="isUnity">
+          <input class="form-check-input" type="checkbox" id="isUnity" v-model="isUnity">
+          multiplica unitário
+        </label>
       </div>
       <div class="form-group">
         <label for="input-value">Valor</label>
@@ -92,7 +96,8 @@
           disabled: true,
           allProducts: [],
           existentProdutsList: [],
-          existItem: true
+          existItem: true,
+          isUnity: false
         }
       },
       methods: {
@@ -174,48 +179,54 @@
         },
 
         async updateExistingProduct(monthProducts, productIndex) {
-            const existProduct = monthProducts.produtos[productIndex];
-            const productUpdate = {
-                name: existProduct.name,
-                quantity: existProduct.quantity + this.inputQtd,
-                value: existProduct.value + parseFloat(this.value.replace(',', '.'))
-            };
+          const existProduct = monthProducts.produtos[productIndex];
+          const submitedValue =  parseFloat(this.value.replace(',', '.'));
 
-            monthProducts.produtos.splice(productIndex, 1, productUpdate);
-            this.allProducts = this.allProducts.map(item => (item.id === this.monthInput ? monthProducts : item));
+          const productUpdate = {
+            name: existProduct.name,
+            quantity: existProduct.quantity + this.inputQtd,
+            value: this.isUnity? existProduct.value + (this.inputQtd * submitedValue) :  existProduct.value + submitedValue
+          };
 
-            await updateProductsWithId(this.yearsInput, this.monthInput, JSON.stringify({ produtos: monthProducts.produtos }));
+          monthProducts.produtos.splice(productIndex, 1, productUpdate);
+          this.allProducts = this.allProducts.map(item => (item.id === this.monthInput ? monthProducts : item));
+
+          await updateProductsWithId(this.yearsInput, this.monthInput, JSON.stringify({ produtos: monthProducts.produtos }));
         },
 
         async addNewProductToMonth(monthProducts) {
-            const newProduct = {
-                name: this.productName,
-                quantity: this.inputQtd,
-                value: parseFloat(this.value.replace(',', '.'))
-            };
+          const submitedValue =  parseFloat(this.value.replace(',', '.'));
 
-            monthProducts.produtos.push(newProduct);
-            this.allProducts = [...this.allProducts.filter(item => item.id !== this.monthInput), monthProducts];
+          const newProduct = {
+              name: this.productName,
+              quantity: this.inputQtd,
+              value: this.isUnity? this.inputQtd * submitedValue : submitedValue
+          };
 
-            await deleteMarketMonth(this.yearsInput, this.monthInput);
-            await postNewMonthProduct(this.yearsInput, JSON.stringify(monthProducts));
+          monthProducts.produtos.push(newProduct);
+          this.allProducts = [...this.allProducts.filter(item => item.id !== this.monthInput), monthProducts];
+
+          await deleteMarketMonth(this.yearsInput, this.monthInput);
+          await postNewMonthProduct(this.yearsInput, JSON.stringify(monthProducts));
         },
 
         async createNewMonth() {
-            const newMonth = {
-                id: this.monthInput,
-                produtos: [
-                    {
-                        name: this.productName,
-                        quantity: this.inputQtd,
-                        value: parseFloat(this.value.replace(',', '.'))
-                    }
-                ]
-            };
+          const submitedValue =  parseFloat(this.value.replace(',', '.'));
 
-            this.allProducts.push(newMonth);
+          const newMonth = {
+            id: this.monthInput,
+            produtos: [
+              {
+                  name: this.productName,
+                  quantity: this.inputQtd,
+                  value: this.isUnity? this.inputQtd * submitedValue : submitedValue
+              }
+            ]
+          };
 
-            await postNewMonthProduct(this.yearsInput, JSON.stringify(newMonth));
+          this.allProducts.push(newMonth);
+
+          await postNewMonthProduct(this.yearsInput, JSON.stringify(newMonth));
         },
 
         resetInputs() {
@@ -275,6 +286,17 @@
 
       .btn {
         width: 210px;
+        margin-bottom: 8px;
+      }
+
+      #handleProductCheckbox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #isUnity {
+        margin-right: 5px;
       }
 
     </style>
