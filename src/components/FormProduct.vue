@@ -238,6 +238,7 @@
           this.disabledeasure = true;
           this.disabledProdFamily = true;
           this.disabled = true;
+          this.isUnity = false;
         },
         async getAllProducts() {
           const allMarketYearProducts = await getAllMarketProductsByYear(this.yearsInput);
