@@ -2,7 +2,7 @@
   <div id="main-container">
     <ListButtons @averagePeriod="handleAveragePeriod" />
     <InputsMonthYear v-if="enableMonth" @monthAndYear="getMonthAndYear" />
-    <AverageGrid :productsList="productsList" :message="findedMonthsMsg" />
+    <AverageGrid :productsList="productsList" :message="findedMonthsMsg" :isMensal="isMensal" />
   </div>
 </template>
 
@@ -12,11 +12,13 @@ import AverageGrid from '@/components/AverageGrid.vue';
 import ListButtons from '@/components/ListButtons.vue';
 import months from '../arrays.helpers/month';
 import helpers from '../Helpers/fetchHelpers';
+import handleHelper from '../Helpers/handles.helper'
 
 const {
   getAllProductsList,
   getAllMarketProductsByYear
 } = helpers;
+const { handleUnityValue } = handleHelper;
 const today = new Date(Date.now());
 
 export default {
@@ -30,22 +32,27 @@ export default {
     return {
       productsList: [],
       findedMonthsMsg: '',
-      enableMonth: false
+      enableMonth: false,
+      isMensal: false
     }
   },
   methods: {
     async handleAveragePeriod(period) {
       switch (period) {
         case 'year':
+          this.isMensal = false;
           await this.handleYearPeriod();
           break;
         case 'summer':
+          this.isMensal = false;
           await this.handleSummerPeriod();
           break;
         case 'winter':
+          this.isMensal = false;
           await this.handleWinterPeriod();
           break;
         case 'month':
+          this.isMensal = true;
           this.enableMonth = true;
           this.findedMonthsMsg = 'Aguardando escolha da data';
           break;
@@ -89,7 +96,7 @@ export default {
 
       const finalList = this.getFinalList(productsByPeriod);
 
-      this.productsList = this.sortItems(finalList);  
+      this.productsList = this.sortItems(finalList);
     },
     getMonthsIds(datesToFetch, year) {
       return datesToFetch
@@ -132,16 +139,24 @@ export default {
       this.handleFindedMonthsMessage(divisor);
 
       return this.productsList.map(product => {
-        const quantities = productsByPeriod?.map(period => {
+        const productInfo = productsByPeriod?.map(period => {
           const foundProduct = period?.find(item => item.name === product.name);
-          return foundProduct ? foundProduct.quantity : 0;
-        });
+          
+          return foundProduct ? {quantity: foundProduct.quantity, value: foundProduct.value } : {quantity: 0, value: 0 } ;
+        });        
 
-        const quantity = quantities?.reduce((acc, val) => acc + val, 0);
+        let quantity = 0;
+        let value = 0;
+
+        for (const item of productInfo) {
+          quantity += item.quantity;
+          value += item.value;
+        }
 
         return {
           ...product,
-          quantity: divisor > 0? (quantity / divisor).toFixed(2) : quantity
+          quantity: divisor > 0? (quantity / divisor).toFixed(2) : quantity,
+          value: handleUnityValue(product.measure, quantity, value)
         };
       });
     },

@@ -38,7 +38,20 @@ const handleSupermarketExpenses = (allExpenses, allProducts, month) => {
   return monthExpenses;
 }
 
+const conditions = {
+    gramas: (qtd, value) => value / (qtd / 1000),
+    mililitros: (qtd, value) => value / (qtd / 1000),
+    unidade: (qtd, value) => value / qtd,
+    pacote: (qtd, value) => value / qtd,
+}
+
+const handleUnityValue = (measure, qtd, value) => {
+  if (qtd === 0) return;
+  return conditions[measure](qtd, value).toFixed(2);
+};
+
 export default {
   handleSumOfAllExpenses,
-  handleSupermarketExpenses
+  handleSupermarketExpenses,
+  handleUnityValue
 }
