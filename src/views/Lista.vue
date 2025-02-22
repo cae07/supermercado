@@ -2,6 +2,7 @@
   <div id="main-container">
     <ListButtons @averagePeriod="handleAveragePeriod" />
     <InputsMonthYear v-if="enableMonth" @monthAndYear="getMonthAndYear" />
+    <export-excel v-if="enableMonth" :marketList="productsList" />
     <AverageGrid :productsList="productsList" :message="findedMonthsMsg" :isMensal="isMensal" />
   </div>
 </template>
@@ -13,6 +14,7 @@ import ListButtons from '@/components/ListButtons.vue';
 import months from '../arrays.helpers/month';
 import helpers from '../Helpers/fetchHelpers';
 import handleHelper from '../Helpers/handles.helper'
+import ExportExcel from '@/components/ExportExcel.vue';
 
 const {
   getAllProductsList,
@@ -26,7 +28,8 @@ export default {
   components: {
     AverageGrid,
     ListButtons,
-    InputsMonthYear
+    InputsMonthYear,
+    ExportExcel
   },
   data() {
     return {
@@ -78,6 +81,7 @@ export default {
         this.productsList = this.sortItems(finalList);
       }
     },
+
     async handleYearPeriod() {
       this.enableMonth = false;
       const datesToFetch = this.getDatesToFetch(months, today.getMonth(), today.getFullYear());
@@ -178,14 +182,15 @@ export default {
       const selectedItems = [];
       let countYear = year;
 
-      for (let i = 0; i < 11; i++) {
+      for (let i = 0; i < 12; i++) {
         let index = (startIndex - i) % array.length;
 
         if (index < 0) {
           index += array.length;
         }
-        if (array[index] === "Dezembro") {
-          countYear -= 1
+
+        if (index === 11 && i !== 0) {
+          countYear -= 1;
         }
 
         selectedItems.push(`${array[index]}-${countYear}`);

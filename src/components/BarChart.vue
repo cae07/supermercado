@@ -1,7 +1,8 @@
 <template>
-  <div v-if="loading">Loading...</div>
+  <InputsMonthYear @monthAndYear="getMonthAndYear" :isBarChart="true" />
+  <div v-if="loading">Escolha o ano</div>
   <div v-else>
-    <Bar class="chartBar" :data="data" :options="options" />
+    <Bar :key="chartKey" class="chartBar" :data="data" :options="options" />
     <h2 :class="{ 'earnings': isPositive, 'expenses': !isPositive }">
       Total investido ano {{ actualYear }}: {{ (earnings - expenses).toFixed(2) }}
     </h2>
@@ -22,6 +23,7 @@ import { Bar } from 'vue-chartjs';
 import helpers from '../Helpers/fetchHelpers';
 import months from '../arrays.helpers/month'
 import handles from '../Helpers/handles.helper';
+import InputsMonthYear from '../components/InputsMonthYear.vue';
 
 const { getExpensesByYear, getAllMarketProductsByYear } = helpers;
 const { handleSumOfAllExpenses, handleSupermarketExpenses } = handles;
@@ -31,15 +33,18 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 export default {
   name: 'BarChart',
   components: {
-    Bar
+    Bar,
+    InputsMonthYear
   },
   data() {
     return {
+      monthInput: '',
       loading: true,
       expenses: 0,
       earnings: 0,
       isPositive: true,
       actualYear: '',
+      chartKey: 0,
       data: {
         labels: months,
         datasets: [
@@ -94,23 +99,23 @@ export default {
       this.expenses = expenses.reduce((curr, prev) => curr + Number(prev), 0);
       return expenses;
     },
+    async getMonthAndYear({ year }) {
+        if (year) {
+          const allExpenses = await getExpensesByYear(year);
+          const allProducts = await getAllMarketProductsByYear(year);
+      
+          const expensesData = this.getExpensesData(allExpenses, allProducts);
+          const earningsData = this.getEarningsData(allExpenses);
+          
+          this.data.datasets[0].data = expensesData;
+          this.data.datasets[1].data = earningsData;
+      
+          this.isPositive = this.earnings - this.expenses >= 0;
+          this.loading = false;
+          this.chartKey += 1;
+        }
+      }
   },
-  async mounted() {
-    const today = new Date(Date.now());
-    const actualYear = today.getFullYear();
-    this.actualYear = actualYear;
-    const allExpenses = await getExpensesByYear(actualYear);
-    const allProducts = await getAllMarketProductsByYear(actualYear);
-
-    const expensesData = this.getExpensesData(allExpenses, allProducts);
-    const earningsData = this.getEarningsData(allExpenses);
-    
-    this.data.datasets[0].data = expensesData;
-    this.data.datasets[1].data = earningsData;
-
-    this.isPositive = this.earnings - this.expenses >= 0;
-    this.loading = false;
-  }
 }
 </script>
 <style scoped>

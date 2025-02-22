@@ -10,7 +10,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div v-if="!isBarChart" class="form-group row">
         <label for="monthInput" class="col-sm-2 col-form-label">Mês:</label>
         <div class="col-sm-10">
           <select @change="getMonthAndYear" class="form-control" name="monthInput" id="monthInput" v-model="monthInput">
@@ -31,6 +31,10 @@ const { years, months } = arrays;
 
 export default {
     name: 'InputsMonthYear',
+    props: {
+        isBarChart: Boolean,
+        default: () => false
+    },
     data() {
         return {
             years,
@@ -49,7 +53,9 @@ export default {
       }
     },
     mounted() {
-      this.updateYear();
+      if (!this.isBarChart) {
+        this.updateYear();
+      }
     }
 }
 </script>

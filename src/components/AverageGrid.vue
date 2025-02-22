@@ -1,7 +1,6 @@
 <template>
   <div class="container mt-5">
     <span>{{ message }}</span>
-    <span>{{ console.log(isMensal) }}</span>
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead class="table-light">
