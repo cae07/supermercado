@@ -79,15 +79,16 @@ export default {
             const installments = this.expenseInstallments;
             const description = installments? `${this.expenseDescription} (1/${installments})` : this.expenseDescription;
 
-            await this.postNewExpense(year, month, description);
+            await this.postNewExpense(year, month, description, installments);
             await this.handleInstallments(installments);
 
             this.clearAllInputs();
         },
-        async postNewExpense (year, month, description) {
+        async postNewExpense (year, month, description, installments) {
             const getExpenses = await getExpensesByYear(year);
             const getMonthExpenses = getExpenses.find(item => item.id === month);
-            const value = parseFloat(this.expenseValue.replace(',', '.'));
+            const fullValue = parseFloat(this.expenseValue.replace(',', '.'));
+            const value = installments ? fullValue / installments : fullValue;
             const key = this.inputExpenseFamily.replace('ç', 'c').replace('é', 'e').replace('ã', 'a').replace('á', 'a').toLowerCase();
 
             if (getMonthExpenses) {
@@ -125,7 +126,7 @@ export default {
                     const description = `${this.expenseDescription} (${installmentIndex + 1}/${installments})`;
                     const actualMonth = months[currentMonthIndex];
                     
-                    await this.postNewExpense(this.currentYear, actualMonth, description);
+                    await this.postNewExpense(this.currentYear, actualMonth, description, installments);
 
                     currentMonthIndex += 1;
                 }
